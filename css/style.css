@@ -461,7 +461,7 @@ body.offcanvas {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: "Quicksand", Arial, sans-serif;
-  background-color: #2c98f0;
+  background-color: #2c3e50;
   color: #fff;
   position: relative;
   -webkit-box-shadow: none !important;
@@ -1427,3 +1427,14 @@ body.offcanvas {
 
 .js .animate-box {
   opacity: 0; }
+
+  /* Custom Override: Make contact links black */
+.colorlib-contact a {
+    color: #000000 !important;
+}
+
+/* Optional: Turn blue when hovering */
+.colorlib-contact a:hover {
+    color: #2c98f0 !important;
+}
+
