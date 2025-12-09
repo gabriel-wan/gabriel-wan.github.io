@@ -78,7 +78,48 @@
         padding: 1.5em;
         border-radius: 0;
     }
-    
+
+    .about-desc p {
+        text-align: justify !important;
+        text-justify: inter-word;
+        font-size: 16px;
+    }
+
+    .services {
+        padding: 10px 5px !important; /* Less padding inside the box */
+        height: 100%; /* Optional: ensures they are all same height */
+    }
+
+    /* Shrink the Icon */
+    .services .icon2 i {
+        font-size: 20px !important; 
+    }
+
+    /* Shrink the Title */
+    .services h3 {
+        font-size: 13px !important; 
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    /* Shrink the Paragraph Text */
+    .services p {
+        font-size: 13px !important;
+        line-height: 1.2;
+    } 
+
+    .col-xs-4 {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+    }
+
+    .skills-intro {
+        text-align: justify !important;
+        text-justify: inter-word;
+        font-size: 16px; /* Optional: matches your other mobile text size */
+        line-height: 1.4;
+    }
+
     /* 2. Force the table to stop expanding */
     .skills-table {
         width: 100% !important;
@@ -99,7 +140,7 @@
     .skills-table .category-cell {
         width: 25%; /* Takes up 25% of screen */
         font-weight: bold;
-        font-size: 11px; /* Smaller label */
+        font-size: 13px; /* Smaller label */
         vertical-align: middle;
     }
     
@@ -143,7 +184,7 @@
     
     /* 4. Padding Adjustment */
     .panel-heading {
-        padding: 10px 5px !important;
+        padding: 10px 0px !important;
     }
 
 
@@ -153,33 +194,56 @@
         display: block;         
         margin-top: 5px;        
         text-align: left;       
+        font-size: 15px;
     }
 
     .panel-body .col-md-12 p,
     .panel-body .col-md-12 strong {
-        font-size: 12px; /* Smaller title for mobile */
+        font-size: 14px; /* Smaller title for mobile */
         line-height: 1.4;
         margin-bottom: 5px;
     }
 
-    /* B. Fix the Side-by-Side Columns: Shrink text so it fits */
+    .panel-body .row .col-md-12 {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    /* 1. ALIGNMENT FIX: Apply height to the container (p or h4) */
+    /* This forces the headers to be 2 lines tall, even if text is short */
+    .col-xs-6 p, 
+    .col-xs-6 h4 {
+        min-height: 45px;      /* Reserve space for 2 lines */
+        margin-bottom: 5px;    /* Space between header and list */
+        margin-left: 0 !important;
+        
+        /* This pushes single-line text (like "Activities") to the bottom */
+        display: flex;       
+        align-items: flex-end; 
+    }
+
+    /* 2. TEXT SIZE: Apply font size to the text itself */
+    .col-xs-6 strong,
+    .col-xs-6 h4,
     .col-xs-6 ul li, 
     .col-xs-6 p {
-        font-size: 11px; /* Smaller text for split columns */
+        font-size: 14px;       /* Your requested size */
         line-height: 1.4;
     }
-
-    .col-xs-6 h4, 
-    .col-xs-6 strong {
-        font-size: 12px; /* Slightly larger for headers */
+    
+    .col-xs-6 ul li {
+        min-height: 60px; 
+        /* If items overlap, increase this number (e.g., to 70px) */
     }
 
+    /* 3. LIST PADDING */
     .col-xs-6 ul {
-        padding-left: 15px !important; /* Save space on left padding */
+        padding-left: 15px !important; 
+        margin-left: 0 !important;
     }
     
     .col-xs-6 {
-        padding-left: 5px; /* Save space between columns */
+        padding-left: 5px; 
         padding-right: 5px;
     }
 
