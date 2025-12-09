@@ -111,4 +111,116 @@
     }
     
     /* The Middle Column (Skill Name) takes the remaining space automatically */
+
+    /* --- PART 1: HEADER FIXES (NEW) --- */
+    /* Forces the Logo and Title to stay on one straight line */
+    
+    /* 1. The Flex Container */
+    .panel-title a {
+        display: flex !important;       /* Keeps Logo and Text side-by-side */
+        align-items: center !important; /* Vertically centers them */
+        text-decoration: none;
+    }
+
+    /* 2. The Logo */
+    .panel-title img {
+        height: 40px !important;       /* Good size for mobile */
+        width: auto !important;
+        margin-right: 10px !important; /* Space between logo and text */
+        flex-shrink: 0 !important;     /* Prevents logo from getting squashed */
+    }
+
+    /* 3. The Text (Neat Wrapping) */
+    .panel-title {
+        font-size: 13px !important;    /* Readable mobile size */
+        line-height: 1.3 !important;   /* Normal spacing for multi-line text */
+        margin: 0 !important;
+        
+        /* ALLOW WRAPPING, but keep it neat */
+        white-space: normal !important; 
+        text-align: left;
+    }
+    
+    /* 4. Padding Adjustment */
+    .panel-heading {
+        padding: 10px 5px !important;
+    }
+
+
+    /* A. Fix the Date: Stack it so it doesn't overlap the title */
+    .panel-body .pull-right {
+        float: none !important; 
+        display: block;         
+        margin-top: 5px;        
+        text-align: left;       
+    }
+
+    .panel-body .col-md-12 p,
+    .panel-body .col-md-12 strong {
+        font-size: 12px; /* Smaller title for mobile */
+        line-height: 1.4;
+        margin-bottom: 5px;
+    }
+
+    /* B. Fix the Side-by-Side Columns: Shrink text so it fits */
+    .col-xs-6 ul li, 
+    .col-xs-6 p {
+        font-size: 11px; /* Smaller text for split columns */
+        line-height: 1.4;
+    }
+
+    .col-xs-6 h4, 
+    .col-xs-6 strong {
+        font-size: 12px; /* Slightly larger for headers */
+    }
+
+    .col-xs-6 ul {
+        padding-left: 15px !important; /* Save space on left padding */
+    }
+    
+    .col-xs-6 {
+        padding-left: 5px; /* Save space between columns */
+        padding-right: 5px;
+    }
+
+    /* 1. TIGHTEN THE BOX PADDING */
+    .timeline-label {
+        padding: 15px !important; /* Reduce inner spacing */
+    }
+
+    /* 2. SHRINK THE LOGO (On its own line) */
+    .timeline-label img {
+        max-width: 60px !important;   /* Small icon size */
+        display: block !important;    /* Ensures it sits on its own line */
+        margin: 0 auto !important;    /* Centers the logo */
+    }
+
+    /* 3. KILL THE INVISIBLE GAPS (Crucial) */
+    /* This overrides the inline 'margin-bottom: 20px' in your HTML */
+    .timeline-label div[style*="margin-bottom"] {
+        margin-bottom: 5px !important; /* Shrink gap below logo to 5px */
+    }
+
+    /* 4. COMPACT THE TEXT */
+    .timeline-label h2 {
+        font-size: 16px !important;    /* Smaller Title */
+        margin-bottom: 5px !important; /* Pull logo closer to title */
+        text-align: center;            /* Optional: Centers title to match logo */
+    }
+
+    /* 5. FIX THE DATE */
+    .timeline-label h2 span {
+        display: block;                /* Date goes to new line */
+        font-size: 12px !important;    
+        color: #999;
+        margin-top: 2px;
+    }
+
+    /* 6. COMPACT PARAGRAPH */
+    .timeline-label p {
+        font-size: 13px !important;    /* Standard mobile reading size */
+        line-height: 1.4 !important;   /* Tighter lines save vertical space */
+        margin: 0 !important;          /* Remove bottom gap */
+        text-align: left;              /* Keep text easy to read */
+    }
 }
