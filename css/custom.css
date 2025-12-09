@@ -78,4 +78,37 @@
         padding: 1.5em;
         border-radius: 0;
     }
+    
+    /* 2. Force the table to stop expanding */
+    .skills-table {
+        width: 100% !important;
+        table-layout: fixed; /* CRITICAL: Forces columns to respect width */
+        word-wrap: break-word; /* Wraps long text to the next line */
+    }
+
+    /* 3. Shrink text and padding to fit 3 columns */
+    .skills-table th, 
+    .skills-table td {
+        padding: 5px 2px !important; /* Very tight padding */
+        font-size: 13px;             /* Smaller text */
+        line-height: 1.2;
+    }
+
+    /* 4. Control specific column widths */
+    /* Category Column (Languages/Tools) */
+    .skills-table .category-cell {
+        width: 25%; /* Takes up 25% of screen */
+        font-weight: bold;
+        font-size: 11px; /* Smaller label */
+        vertical-align: middle;
+    }
+    
+    /* Proficiency Column (Stars) */
+    .skills-table .stars {
+        width: 35%; 
+        font-size: 10px; /* Tiny stars so they fit in one line */
+        letter-spacing: -1px; /* Squeeze stars closer together */
+    }
+    
+    /* The Middle Column (Skill Name) takes the remaining space automatically */
 }
