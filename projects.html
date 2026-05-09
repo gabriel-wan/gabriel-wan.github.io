@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gabriel Wan | Projects</title>
+  <title>Gabriel Wan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/bootstrap.css">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
   <link rel="stylesheet" href="css/custom.css">
 </head>
 
@@ -20,10 +19,8 @@
 
   <div id="particles-js" style="position:fixed; width:100%; height:100%; top:0; left:0; z-index:0; background:#0a0a0f;"></div>
 
-  <!-- Wrapper: navbar + card as one glass block -->
   <div style="width:90%; max-width:900px; margin:4rem auto 4rem auto; position:relative; z-index:1;">
 
-    <!-- Navbar -->
     <nav style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
       <div style="display:flex; justify-content:center; align-items:center;">
         <ul style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
@@ -40,49 +37,78 @@
       </div>
     </nav>
 
-    <!-- Glass Card -->
     <div style="background:rgba(255,255,255,0.06); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.08); border-top:none; border-radius:0 0 12px 12px; padding:3rem;">
 
       <span style="display:block; font-size:11px; text-transform:uppercase; letter-spacing:5px; color:rgba(255,255,255,0.45); margin-bottom:1rem; font-family:'Quicksand',sans-serif;">My Portfolio</span>
       <h2 style="color:#ffffff; font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:5px; margin-bottom:3rem;">Recent Projects</h2>
 
-      <!-- Project Cards Grid -->
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; margin-bottom:2.5rem;">
+      <div class="projects-grid-container" style="display:grid; gap:2.5rem; margin-bottom:3rem;">
 
-        <!-- Calculator App -->
-        <a href="https://github.com/gabriel-wan/Calculator-App" target="_blank" class="project-card-link">
-          <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden; height: 100%;">
-            <div style="height:180px; background-image:url(images/project-1.jpg); background-size:cover; background-position:center;"></div>
-            <div style="padding:1.5rem;">
-              <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.1rem; font-weight:600; margin-bottom:0.75rem;">Calculator App</h3>
-              <div style="margin-bottom:1rem;">
-                <span style="display:inline-block; font-size:11px; padding:3px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; margin-right:4px;">HTML</span>
-                <span style="display:inline-block; font-size:11px; padding:3px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; margin-right:4px;">CSS</span>
-                <span style="display:inline-block; font-size:11px; padding:3px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif;">JavaScript</span>
+        <a href="https://github.com/gabriel-wan/uwash-bot" target="_blank" class="project-card-link" style="text-decoration: none;">
+          <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; padding:0; text-align:left;">
+            <div style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <div style="max-width: 450px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <img src="images/uwash.jpg" alt="UWash IoT Dashboard" style="width:100%; height:auto; display:block;">
               </div>
-              <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:1.6; margin-bottom:1.25rem; font-family:'Quicksand',sans-serif;">A fully functional calculator built with vanilla HTML, CSS and JavaScript. Supports basic arithmetic operations.</p>
+            </div>
+            <div style="padding: 2.5rem;">
+              <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">UWash - Student Life Hackathon 2026</h3>
+              <div style="margin-bottom:1.2rem;">
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">Python</span>
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">Flask</span>
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600;">ESP32 IoT</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin-bottom:1.5rem;">
+                Engineered a full-stack IoT laundry monitoring system using ESP32 vibration sensors and a Python Flask backend, enabling real-time machine availability tracking across residential college laundry rooms. Developed an asynchronous Telegram bot with automated push notifications and a digital queue system.
+              </p>
+              <object><a href="https://drive.google.com/file/d/1ZUDJiysRXRrE5yWQg5wfWzUAJ6YI6aZ9/view" target="_blank" style="display:inline-block; font-size:13px; font-weight:700; color:#818cf8; background:rgba(129,140,248,0.1); border:1px solid rgba(129,140,248,0.3); padding:8px 18px; border-radius:6px; text-decoration:none;"><i class="fas fa-play-circle" style="margin-right:6px;"></i> Watch Live Demo</a></object>
             </div>
           </div>
         </a>
 
-        <!-- Snake Game -->
-        <a href="https://github.com/gabriel-wan/Snake-Game" target="_blank" class="project-card-link">
-          <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden; height: 100%;">
-            <div style="height:180px; background-image:url(images/project-2.jpg); background-size:cover; background-position:center;"></div>
-            <div style="padding:1.5rem;">
-              <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.1rem; font-weight:600; margin-bottom:0.75rem;">Snake Game</h3>
-              <div style="margin-bottom:1rem;">
-                <span style="display:inline-block; font-size:11px; padding:3px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; margin-right:4px;">Python</span>
-                <span style="display:inline-block; font-size:11px; padding:3px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif;">Pygame</span>
+        <a href="https://github.com/gabriel-wan/hackomania_interledger" target="_blank" class="project-card-link" style="text-decoration: none;">
+          <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; padding:0; text-align:left;">
+            <div style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <div style="max-width: 450px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <img src="images/emergency-fund.jpg" alt="Emergency Fund Map Dashboard" style="width:100%; height:auto; display:block;">
               </div>
-              <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:1.6; margin-bottom:1.25rem; font-family:'Quicksand',sans-serif;">Classic snake game built in Python using the Pygame library. Features score tracking and increasing difficulty.</p>
+            </div>
+            <div style="padding: 2.5rem;">
+              <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Emergency Fund - HackOMania 2026</h3>
+              <div style="margin-bottom:1.2rem;">
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">TypeScript</span>
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">ClickHouse</span>
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600;">Interledger</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin:0;">
+                Built a geospatial matching engine using ClickHouse to link live USGS disaster signals with affected users in &lt;50ms. Integrated Interledger for instant fund distribution and implemented SHA-256 hash-chaining for tamper-proof audit logs.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://github.com/Garuda-Techs/LoungeBookingBot" target="_blank" class="project-card-link" style="text-decoration: none;">
+          <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; padding:0; text-align:left;">
+            <div style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <div style="max-width: 220px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <img src="images/lounge-booking.jpg" alt="Booking UI Calendar" style="width:100%; height:auto; display:block;">
+              </div>
+            </div>
+            <div style="padding: 2.5rem;">
+              <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Lounge Booking Mini App</h3>
+              <div style="margin-bottom:1.2rem;">
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">Node.js</span>
+                <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600;">SQLite</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin:0;">
+                Developed a full-stack Telegram Mini App for facility bookings serving 130+ active users. Engineered strict locking mechanisms to handle high-frequency booking bursts and resolved critical integer overflow bugs affecting some Telegram IDs.
+              </p>
             </div>
           </div>
         </a>
 
       </div>
 
-      <!-- GitHub Button -->
       <div style="text-align:center;">
         <a href="https://github.com/gabriel-wan" target="_blank" style="display:inline-block; padding:12px 32px; background:transparent; color:#ffffff; border:1px solid rgba(255,255,255,0.4); border-radius:2px; font-size:13px; text-transform:uppercase; letter-spacing:1px; text-decoration:none; font-family:'Quicksand',sans-serif;">See More on GitHub</a>
       </div>
@@ -108,6 +134,5 @@
     "retina_detect": true
   });
   </script>
-
 </body>
 </html>
