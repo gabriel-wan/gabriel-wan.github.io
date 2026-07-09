@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Gabriel Wan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body style="margin:0; padding:0; background:#0a0a0f;">
+
+  <div id="particles-js" style="position:fixed; width:100%; height:100%; top:0; left:0; z-index:0; background:#0a0a0f;"></div>
+
+  <div style="width:90%; max-width:900px; margin:4rem auto 4rem auto; position:relative; z-index:1;">
+
+    <!-- Navbar -->
+    <nav style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
+      <div style="display:flex; justify-content:center; align-items:center;">
+        <ul style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
+          <li><a href="index.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Home</a></li>
+          <li><a href="about.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">About</a></li>
+          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Projects</a></li>
+          <li><a href="experience.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:#ffffff; text-decoration:none; font-family:'Quicksand',sans-serif; border-bottom:2px solid #ffffff; padding-bottom:2px;">Experience</a></li>
+        </ul>
+        <div class="navbar-socials">
+            <a href="mailto:gabrielwanjp@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/gabrielwanjp/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/gabriel-wan" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Glass Card -->
+    <div style="background:rgba(255,255,255,0.06); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.08); border-top:none; border-radius:0 0 12px 12px; padding:3rem;">
+
+      <span style="display:block; font-size:11px; text-transform:uppercase; letter-spacing:5px; color:rgba(255,255,255,0.45); margin-bottom:1rem; font-family:'Quicksand',sans-serif;">Experience</span>
+      <h2 style="color:#ffffff; font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:5px; margin-bottom:3rem;">Work Experience</h2>
+
+      <!-- Aimazing Entry -->
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:2rem; margin-bottom:1.5rem;">
+        <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+          <img src="images/aimazing-logo.jpg" alt="Aimazing Logo" style="height:55px; width:auto; border-radius:6px; flex-shrink:0;">
+          
+          <div class="experience-header" style="flex: 1; min-width: 200px;">
+            <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1rem; font-weight:700; margin:0;">Business Management Intern @ AImazing</h3>
+            <span style="color:rgba(255,255,255,0.5); font-family:'Quicksand',sans-serif; font-size:0.875rem;">Jan 2025 – Jun 2025</span>
+          </div>
+
+        </div>
+        <p style="color:rgba(255,255,255,0.75); font-family:'Quicksand',sans-serif; font-size:0.95rem; line-height:1.8; margin:0;">
+          Prior to enrolling at NUS, I gained valuable industry experience as a Business Management Intern at retail-tech startup Aimazing. My role focused on project management and operations, where I utilized <strong style="color:#ffffff;">Jira</strong> to track tasks and ensure the timely delivery of client requirements. I collaborated closely with executive teams to coordinate large-scale device rollouts for major partners like <strong style="color:#ffffff;">ION Orchard, VivoCity, and Wisma Atria</strong>, serving as the primary liaison for tenant logistics. Additionally, I contributed to process optimization by identifying workflow gaps and using data-driven insights to refine internal efficiency and decision-making.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {"value": 80, "density": {"enable": true, "value_area": 800}},
+      "color": {"value": "#ffffff"},
+      "shape": {"type": "circle"},
+      "opacity": {"value": 0.5, "random": false},
+      "size": {"value": 3, "random": true},
+      "line_linked": {"enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1},
+      "move": {"enable": true, "speed": 3, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false}
+    },
+    "retina_detect": true
+  });
+  </script>
+
+</body>
+</html>
