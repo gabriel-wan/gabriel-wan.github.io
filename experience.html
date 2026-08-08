@@ -23,13 +23,19 @@
   <div style="width:90%; max-width:900px; margin:4rem auto 4rem auto; position:relative; z-index:1;">
 
     <!-- Navbar -->
-    <nav style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
-      <div style="display:flex; justify-content:center; align-items:center;">
-        <ul style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
+    <nav class="site-nav" style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
+      <div class="site-nav-inner" style="display:flex; justify-content:center; align-items:center;">
+        <div class="mobile-nav-bar">
+          <span class="mobile-page-label">Experience</span>
+          <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+            <span>Menu</span><i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+        <ul id="primary-navigation" class="site-nav-links" style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
           <li><a href="index.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Home</a></li>
           <li><a href="about.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">About</a></li>
-          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Projects</a></li>
           <li><a href="experience.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:#ffffff; text-decoration:none; font-family:'Quicksand',sans-serif; border-bottom:2px solid #ffffff; padding-bottom:2px;">Experience</a></li>
+          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Projects</a></li>
         </ul>
         <div class="navbar-socials">
             <a href="mailto:gabrielwanjp@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -45,6 +51,41 @@
       <span style="display:block; font-size:11px; text-transform:uppercase; letter-spacing:5px; color:rgba(255,255,255,0.45); margin-bottom:1rem; font-family:'Quicksand',sans-serif;">Experience</span>
       <h2 style="color:#ffffff; font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:5px; margin-bottom:3rem;">Work Experience</h2>
 
+      <!-- SIAEC Entry -->
+      <article class="experience-card experience-card-featured">
+        <div class="experience-card-topline">
+          <div class="experience-company">
+            <div class="experience-logo-wrap">
+              <img src="images/siaec-logo.jpg" alt="SIA Engineering Company logo" class="experience-logo experience-logo-wide">
+            </div>
+            <div class="experience-title-group">
+              <span class="experience-eyebrow">Ground Support Equipment (GSE)</span>
+              <div class="experience-header">
+                <h3>Digital Transformation Intern @ SIA Engineering Company</h3>
+                <span>May 2026 &ndash; Aug 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="experience-impact-list">
+          <li>Built and live-tested a Microsoft Power Platform solution using <strong>Power Apps, SharePoint Lists, and Power Automate</strong> to digitalise GSE maintenance records and approval workflows.</li>
+          <li>Designed the application's data model and business logic for preventive maintenance scheduling, record validation, and automated due-date tracking.</li>
+          <li>Developed a Chrome and Edge extension that consolidated live telemetry for <strong>295+ GSE assets</strong> into a searchable dashboard, eliminating manual lookup across multiple portal pages.</li>
+        </ul>
+
+        <div class="experience-tags" aria-label="Technologies used">
+          <span>Power Apps</span>
+          <span>Power Automate</span>
+          <span>SharePoint Lists</span>
+          <span>Browser Extension</span>
+        </div>
+
+        <a class="testimonial-link" href="testimonials/siaec-recommendation.pdf" target="_blank" rel="noopener" aria-label="Open SIA Engineering Company testimonial PDF">
+          Testimonial <span aria-hidden="true">&nearr;</span>
+        </a>
+      </article>
+
       <!-- Aimazing Entry -->
       <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:2rem; margin-bottom:1.5rem;">
         <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; flex-wrap:wrap;">
@@ -56,9 +97,14 @@
           </div>
 
         </div>
-        <p style="color:rgba(255,255,255,0.75); font-family:'Quicksand',sans-serif; font-size:0.95rem; line-height:1.8; margin:0;">
-          Prior to enrolling at NUS, I gained valuable industry experience as a Business Management Intern at retail-tech startup Aimazing. My role focused on project management and operations, where I utilized <strong style="color:#ffffff;">Jira</strong> to track tasks and ensure the timely delivery of client requirements. I collaborated closely with executive teams to coordinate large-scale device rollouts for major partners like <strong style="color:#ffffff;">ION Orchard, VivoCity, and Wisma Atria</strong>, serving as the primary liaison for tenant logistics. Additionally, I contributed to process optimization by identifying workflow gaps and using data-driven insights to refine internal efficiency and decision-making.
-        </p>
+        <ul class="experience-impact-list">
+          <li>Led the deployment of <strong>500+ IoT devices</strong> across tier-1 commercial hubs including ION Orchard and VivoCity, designing Jira workflows that aligned engineering, logistics, and client onboarding teams.</li>
+          <li>Managed client relationships and coordinated cross-functional teams through device rollouts, identifying and resolving process gaps to keep projects on schedule.</li>
+        </ul>
+
+        <a class="testimonial-link" href="testimonials/aimazing-recommendation.pdf" target="_blank" rel="noopener" aria-label="Open AImazing testimonial PDF">
+          Testimonial <span aria-hidden="true">&nearr;</span>
+        </a>
       </div>
 
     </div>

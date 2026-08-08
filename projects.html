@@ -21,13 +21,19 @@
 
   <div style="width:90%; max-width:900px; margin:4rem auto 4rem auto; position:relative; z-index:1;">
 
-    <nav style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
-      <div style="display:flex; justify-content:center; align-items:center;">
-        <ul style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
+    <nav class="site-nav" style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
+      <div class="site-nav-inner" style="display:flex; justify-content:center; align-items:center;">
+        <div class="mobile-nav-bar">
+          <span class="mobile-page-label">Projects</span>
+          <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+            <span>Menu</span><i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+        <ul id="primary-navigation" class="site-nav-links" style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
           <li><a href="index.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif; transition:color 0.3s;">Home</a></li>
           <li><a href="about.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">About</a></li>
-          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:#ffffff; text-decoration:none; font-family:'Quicksand',sans-serif; border-bottom:2px solid #ffffff; padding-bottom:2px;">Projects</a></li>
           <li><a href="experience.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Experience</a></li>
+          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:#ffffff; text-decoration:none; font-family:'Quicksand',sans-serif; border-bottom:2px solid #ffffff; padding-bottom:2px;">Projects</a></li>
         </ul>
         <div class="navbar-socials">
             <a href="mailto:gabrielwanjp@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -46,19 +52,19 @@
 
         <a href="https://github.com/gabriel-wan/uwash-bot" target="_blank" class="project-card-link" style="text-decoration: none;">
           <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; padding:0; text-align:left;">
-            <div style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
-              <div style="max-width: 450px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="project-media" style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <div class="project-media-frame" style="max-width: 450px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 <img src="images/uwash.jpg" alt="UWash IoT Dashboard" style="width:100%; height:auto; display:block;">
               </div>
             </div>
-            <div style="padding: 2.5rem;">
+            <div class="project-content" style="padding: 2.5rem;">
               <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">UWash - Student Life Hackathon 2026</h3>
               <div style="margin-bottom:1.2rem;">
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">Python</span>
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">Flask</span>
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600;">ESP32 IoT</span>
               </div>
-              <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin-bottom:1.5rem;">
+              <p class="project-description" style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin-bottom:1.5rem;">
                 Engineered a full-stack IoT laundry monitoring system using ESP32 vibration sensors and a Python Flask backend, enabling real-time machine availability tracking across residential college laundry rooms. Developed an asynchronous Telegram bot with automated push notifications and a digital queue system.
               </p>
               <object><a href="https://drive.google.com/file/d/1ZUDJiysRXRrE5yWQg5wfWzUAJ6YI6aZ9/view" target="_blank" style="display:inline-block; font-size:13px; font-weight:700; color:#818cf8; background:rgba(129,140,248,0.1); border:1px solid rgba(129,140,248,0.3); padding:8px 18px; border-radius:6px; text-decoration:none;"><i class="fas fa-play-circle" style="margin-right:6px;"></i> Watch Live Demo</a></object>
@@ -68,19 +74,19 @@
 
         <a href="https://github.com/gabriel-wan/hackomania_interledger" target="_blank" class="project-card-link" style="text-decoration: none;">
           <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; padding:0; text-align:left;">
-            <div style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
-              <div style="max-width: 450px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="project-media" style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <div class="project-media-frame" style="max-width: 450px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 <img src="images/emergency-fund.jpg" alt="Emergency Fund Map Dashboard" style="width:100%; height:auto; display:block;">
               </div>
             </div>
-            <div style="padding: 2.5rem;">
+            <div class="project-content" style="padding: 2.5rem;">
               <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Emergency Fund - HackOMania 2026</h3>
               <div style="margin-bottom:1.2rem;">
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">TypeScript</span>
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">ClickHouse</span>
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600;">Interledger</span>
               </div>
-              <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin:0;">
+              <p class="project-description" style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin:0;">
                 Built a geospatial matching engine using ClickHouse to link live USGS disaster signals with affected users in &lt;50ms. Integrated Interledger for instant fund distribution and implemented SHA-256 hash-chaining for tamper-proof audit logs.
               </p>
             </div>
@@ -89,18 +95,18 @@
 
         <a href="https://github.com/Garuda-Techs/LoungeBookingBot" target="_blank" class="project-card-link" style="text-decoration: none;">
           <div class="project" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; padding:0; text-align:left;">
-            <div style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
-              <div style="max-width: 220px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="project-media" style="background: rgba(255,255,255,0.03); padding: 2rem 2rem 0 2rem; display: flex; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <div class="project-media-frame" style="max-width: 220px; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 <img src="images/lounge-booking.jpg" alt="Booking UI Calendar" style="width:100%; height:auto; display:block;">
               </div>
             </div>
-            <div style="padding: 2.5rem;">
+            <div class="project-content" style="padding: 2.5rem;">
               <h3 style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Lounge Booking Mini App</h3>
               <div style="margin-bottom:1.2rem;">
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600; margin-right:6px; margin-bottom:6px;">Node.js</span>
                 <span style="display:inline-block; font-size:12px; padding:4px 12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:#ffffff; font-family:'Quicksand',sans-serif; font-weight:600;">SQLite</span>
               </div>
-              <p style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin:0;">
+              <p class="project-description" style="color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; margin:0;">
                 Developed a full-stack Telegram Mini App for facility bookings serving 130+ active users. Engineered strict locking mechanisms to handle high-frequency booking bursts and resolved critical integer overflow bugs affecting some Telegram IDs.
               </p>
             </div>

@@ -23,13 +23,19 @@
   <div style="width:90%; max-width:900px; margin:4rem auto 4rem auto; position:relative; z-index:1;">
 
     <!-- Navbar -->
-    <nav style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
-      <div style="display:flex; justify-content:center; align-items:center;">
-        <ul style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
+    <nav class="site-nav" style="background:rgba(255,255,255,0.08); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.06); border-radius:12px 12px 0 0; padding:1.25rem 2rem;">
+      <div class="site-nav-inner" style="display:flex; justify-content:center; align-items:center;">
+        <div class="mobile-nav-bar">
+          <span class="mobile-page-label">About</span>
+          <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+            <span>Menu</span><i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+        <ul id="primary-navigation" class="site-nav-links" style="display:flex; list-style:none; margin:0; padding:0; gap:3rem; align-items:center; flex-wrap:wrap;">
           <li><a href="index.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Home</a></li>
           <li><a href="about.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:#ffffff; text-decoration:none; font-family:'Quicksand',sans-serif; border-bottom:2px solid #ffffff; padding-bottom:2px;">About</a></li>
-          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Projects</a></li>
           <li><a href="experience.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Experience</a></li>
+          <li><a href="projects.html" style="font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.6); text-decoration:none; font-family:'Quicksand',sans-serif;">Projects</a></li>
         </ul>
         <div class="navbar-socials">
             <a href="mailto:gabrielwanjp@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -50,7 +56,7 @@
         <div style="display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap; margin-bottom:2rem;">
           <img src="images/about.jpg" alt="Gabriel Wan" style="width:160px; height:160px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,0.15); flex-shrink:0;">
           <div style="flex:1; min-width:200px;">
-            <p style="color:#ffffff; font-size:1rem; line-height:1.8; margin-bottom:0.75rem; font-family:'Quicksand',sans-serif;"><strong>Hi! I'm Gabriel Wan, a Year 1 Computer Science student from NUS.</strong></p>
+            <p style="color:#ffffff; font-size:1rem; line-height:1.8; margin-bottom:0.75rem; font-family:'Quicksand',sans-serif;"><strong>Hi! I'm Gabriel Wan, a Year 2 Computer Science student at NUS.</strong></p>
             <p style="color:rgba(255,255,255,0.7); font-size:1rem; line-height:1.8; margin-bottom:0; font-family:'Quicksand',sans-serif;">I build things with code — from algorithms to products. Currently studying at NUS, and always looking for the next interesting problem to solve. I pride myself on being resilient, hardworking, and unafraid to tackle tough challenges. Beyond the screen, I'm an avid squash player and a believer in continuous learning.</p>
           </div>
         </div>
@@ -66,58 +72,24 @@
         <h2 style="color:#ffffff; font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; text-transform:uppercase; letter-spacing:5px; margin-bottom:2rem;">My Skills</h2>
         <p style="color:rgba(255,255,255,0.7); font-size:1rem; line-height:1.8; margin-bottom:2rem; font-family:'Quicksand',sans-serif;">I have built a strong foundation in Computer Science principles through my coursework at NUS and hands-on projects. I am constantly learning new technologies to expand my stack.</p>
 
-        <table style="width:100%; border-collapse:collapse; font-family:'Quicksand',sans-serif;">
-          <thead>
-            <tr>
-              <th style="background:rgba(255,255,255,0.1); color:#ffffff; padding:14px; text-transform:uppercase; font-size:0.8rem; letter-spacing:2px; text-align:center; border:1px solid rgba(255,255,255,0.1);">Category</th>
-              <th style="background:rgba(255,255,255,0.1); color:#ffffff; padding:14px; text-transform:uppercase; font-size:0.8rem; letter-spacing:2px; text-align:center; border:1px solid rgba(255,255,255,0.1);">Skill</th>
-              <th style="background:rgba(255,255,255,0.1); color:#ffffff; padding:14px; text-transform:uppercase; font-size:0.8rem; letter-spacing:2px; text-align:center; border:1px solid rgba(255,255,255,0.1);">Proficiency</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td rowspan="4" style="background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08); font-weight:500; vertical-align:middle;">
-                <i class="fas fa-code" style="display:block; font-size:1.25rem; margin-bottom:6px; color:rgba(255,255,255,0.5);"></i>Languages
-              </td>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">Python</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">Java</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">JavaScript</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">SQL</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td rowspan="2" style="background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08); font-weight:500; vertical-align:middle;">
-                <i class="fas fa-layer-group" style="display:block; font-size:1.25rem; margin-bottom:6px; color:rgba(255,255,255,0.5);"></i>Frameworks
-              </td>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">TensorFlow</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">PyTorch</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td rowspan="2" style="background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08); font-weight:500; vertical-align:middle;">
-                <i class="fas fa-tools" style="display:block; font-size:1.25rem; margin-bottom:6px; color:rgba(255,255,255,0.5);"></i>Tools
-              </td>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">Git & GitHub</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-            <tr>
-              <td style="color:rgba(255,255,255,0.8); padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);">VS Code</td>
-              <td style="padding:12px; text-align:center; border:1px solid rgba(255,255,255,0.08);"><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i><i class="fas fa-star" style="color:#6366f1;"></i></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="skills-grid">
+          <section class="skill-group">
+            <div class="skill-group-heading"><i class="fas fa-code" aria-hidden="true"></i><h3>Languages</h3></div>
+            <div class="skill-chips"><span>Java</span><span>Python</span><span>C</span><span>JavaScript</span></div>
+          </section>
+          <section class="skill-group">
+            <div class="skill-group-heading"><i class="fas fa-server" aria-hidden="true"></i><h3>Backend &amp; Data</h3></div>
+            <div class="skill-chips"><span>Node.js</span><span>Express.js</span><span>Fastify</span><span>SQLite</span><span>ClickHouse</span></div>
+          </section>
+          <section class="skill-group">
+            <div class="skill-group-heading"><i class="fas fa-brain" aria-hidden="true"></i><h3>ML &amp; Cloud</h3></div>
+            <div class="skill-chips"><span>TensorFlow</span><span>PyTorch</span><span>Google Cloud</span></div>
+          </section>
+          <section class="skill-group">
+            <div class="skill-group-heading"><i class="fas fa-tools" aria-hidden="true"></i><h3>Platforms &amp; Tools</h3></div>
+            <div class="skill-chips"><span>Git &amp; GitHub</span><span>Docker</span><span>Jira</span><span>Microsoft Power Platform</span></div>
+          </section>
+        </div>
       </div>
 
       <hr style="border:none; border-top:1px solid rgba(255,255,255,0.08); margin:2.5rem 0;">
@@ -135,23 +107,33 @@
           </div>
           <div style="padding:1.5rem;">
             <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem;">
-              <strong style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:0.95rem;">Bachelor of Computing in Computer Science (Hons)</strong>
+              <div class="education-degree">
+                <strong style="color:#ffffff; font-family:'Quicksand',sans-serif; font-size:0.95rem;">Bachelor of Computing in Computer Science (Hons)</strong>
+                <span class="education-gpa">GPA 4.43 / 5.00</span>
+              </div>
               <span style="color:rgba(255,255,255,0.5); font-family:'Quicksand',sans-serif; font-size:0.875rem;">Aug 2025 – Present</span>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
               <div>
-                <p style="color:rgba(255,255,255,0.8); font-family:'Quicksand',sans-serif; font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Relevant Coursework:</p>
-                <ul style="padding-left:1.25rem; margin:0;">
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">CS1010X Programming Methodology</li>
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">CS1231S Discrete Structures</li>
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">MA1522 Linear Algebra</li>
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem;">CS2030S Programming Methodology II</li>
+                <p style="color:rgba(255,255,255,0.8); font-family:'Quicksand',sans-serif; font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Selected Coursework:</p>
+                <ul id="selected-coursework-list" class="selected-coursework">
+                  <li><strong>CS2030S</strong><span>Programming Methodology II</span></li>
+                  <li><strong>CS2040S</strong><span>Data Structures and Algorithms</span></li>
+                  <li><strong>CS2100</strong><span>Computer Organisation</span></li>
+                  <li><strong>CS2101</strong><span>Effective Communication for Computing Professionals</span></li>
+                  <li><strong>CS2103T</strong><span>Software Engineering</span></li>
+                  <li><strong>CS2106</strong><span>Introduction to Operating Systems</span></li>
+                  <li><strong>ST2334</strong><span>Probability and Statistics</span></li>
+                  <li><strong>MA1521</strong><span>Calculus for Computing</span></li>
+                  <li><strong>MA1522</strong><span>Linear Algebra for Computing</span></li>
                 </ul>
+                <button class="coursework-toggle" type="button" aria-expanded="false" aria-controls="selected-coursework-list">View course names</button>
               </div>
               <div>
                 <p style="color:rgba(255,255,255,0.8); font-family:'Quicksand',sans-serif; font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Activities:</p>
                 <ul style="padding-left:1.25rem; margin:0;">
                   <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">ICG Squash Captain 2026</li>
+                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">IFG Squash Captain 2026</li>
                   <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">CAPT Garuda House Committee (Tech)</li>
                   <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem;">CAPT in Silence Engager (Deaf Community)</li>
                 </ul>
@@ -172,22 +154,9 @@
               <span style="color:rgba(255,255,255,0.5); font-family:'Quicksand',sans-serif; font-size:0.875rem;">Jan 2021 – Dec 2022</span>
             </div>
             <p style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:1.25rem;">Rank Points: 86.25 / 90 &nbsp;(4 Distinctions)</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-              <div>
-                <p style="color:rgba(255,255,255,0.8); font-family:'Quicksand',sans-serif; font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Subject Combination:</p>
-                <ul style="padding-left:1.25rem; margin:0;">
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">H2 Physics, H2 Mathematics, H2 Economics</li>
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">H1 Chemistry</li>
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem;">H1 General Paper & H1 Project Work</li>
-                </ul>
-              </div>
-              <div>
-                <p style="color:rgba(255,255,255,0.8); font-family:'Quicksand',sans-serif; font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Activities:</p>
-                <ul style="padding-left:1.25rem; margin:0;">
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem; margin-bottom:4px;">Tennis 'A' Division</li>
-                  <li style="color:rgba(255,255,255,0.7); font-family:'Quicksand',sans-serif; font-size:0.875rem;">College Orientation Group Leader</li>
-                </ul>
-              </div>
+            <div class="education-highlights" aria-label="Junior college activities">
+              <span><i class="fas fa-table-tennis-paddle-ball" aria-hidden="true"></i>Tennis 'A' Division</span>
+              <span><i class="fas fa-users" aria-hidden="true"></i>College Orientation Group Leader</span>
             </div>
           </div>
         </div>

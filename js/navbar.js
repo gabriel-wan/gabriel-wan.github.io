@@ -1,69 +1,54 @@
-// Navbar hamburger menu functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navbarMenu = document.querySelector('.navbar-menu');
-    const navbarLinks = document.querySelectorAll('.navbar-menu li a');
+document.addEventListener('DOMContentLoaded', function () {
+    const nav = document.querySelector('.site-nav');
+    if (!nav) return;
+
+    const toggle = nav.querySelector('.nav-menu-toggle');
+    const toggleIcon = toggle?.querySelector('i');
+    const links = nav.querySelectorAll('.site-nav-links a');
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Hamburger menu toggle
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navbarMenu.classList.toggle('active');
-        });
+    function setMenu(open) {
+        nav.classList.toggle('nav-open', open);
+        toggle?.setAttribute('aria-expanded', String(open));
+        toggleIcon?.classList.toggle('fa-bars', !open);
+        toggleIcon?.classList.toggle('fa-xmark', open);
     }
 
-    // Close menu when a link is clicked
-    navbarLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger?.classList.remove('active');
-            navbarMenu?.classList.remove('active');
-
-            // Set active link based on href
-            const href = this.getAttribute('href');
-            navbarLinks.forEach(l => l.classList.remove('active'));
-            
-            if (href === currentPage || 
-                (currentPage === '' && href === 'index.html') ||
-                (currentPage === 'index.html' && href === 'index.html')) {
-                this.classList.add('active');
-            } else if (href.split('/').pop() === currentPage) {
-                this.classList.add('active');
-            }
-        });
-    });
-
-    // Set active link on page load
-    setActiveLink();
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.navbar-container')) {
-            hamburger?.classList.remove('active');
-            navbarMenu?.classList.remove('active');
-        }
-    });
-});
-
-function setActiveLink() {
-    const navbarLinks = document.querySelectorAll('.navbar-menu li a');
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    navbarLinks.forEach(link => {
-        link.classList.remove('active');
+    links.forEach(function (link) {
         const href = link.getAttribute('href');
-        
-        if (href === currentPage || 
-            (currentPage === '' && href === 'index.html') ||
-            (href === 'index.html' && (currentPage === '' || currentPage === 'index.html'))) {
-            link.classList.add('active');
+        const isCurrent = href === currentPage ||
+            (href === 'index.html' && (currentPage === '' || currentPage === 'index.html'));
+
+        link.classList.toggle('active', isCurrent);
+        if (isCurrent) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+
+        link.addEventListener('click', function () {
+            setMenu(false);
+        });
+    });
+
+    toggle?.addEventListener('click', function () {
+        setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!nav.contains(event.target)) setMenu(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            setMenu(false);
+            toggle?.focus();
         }
     });
-}
 
-// Recheck on page visibility change (useful for SPA or tab switching)
-document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-        setActiveLink();
-    }
+    const courseworkList = document.querySelector('.selected-coursework');
+    const courseworkToggle = document.querySelector('.coursework-toggle');
+
+    courseworkToggle?.addEventListener('click', function () {
+        const showNames = courseworkList.classList.toggle('show-course-names');
+        courseworkToggle.setAttribute('aria-expanded', String(showNames));
+        courseworkToggle.textContent = showNames ? 'Hide course names' : 'View course names';
+    });
 });
