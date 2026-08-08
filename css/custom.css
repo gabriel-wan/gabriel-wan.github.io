@@ -13,6 +13,23 @@ body {
     font-family: 'Quicksand', sans-serif !important;
 }
 
+/* Remove Bootstrap's persistent focus ring after mouse/touch interaction. */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
+:where(a, button, [role="button"]):focus-visible {
+    outline-color: var(--accent-blue-soft) !important;
+}
+
+html.using-pointer :where(a, button, [role="button"]):focus,
+html.using-pointer :where(a, button, [role="button"]):focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 /* ==========================================================================
    1. UNIFIED HEADER & GLASS BODY LAYOUT
    ========================================================================== */

@@ -1,3 +1,17 @@
+function usePointerInput() {
+    document.documentElement.classList.add('using-pointer');
+}
+
+document.addEventListener('pointerdown', usePointerInput, true);
+document.addEventListener('mousedown', usePointerInput, true);
+document.addEventListener('touchstart', usePointerInput, { capture: true, passive: true });
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Tab') {
+        document.documentElement.classList.remove('using-pointer');
+    }
+}, true);
+
 document.addEventListener('DOMContentLoaded', function () {
     const nav = document.querySelector('.site-nav');
     if (!nav) return;
