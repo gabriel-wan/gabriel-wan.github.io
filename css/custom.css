@@ -218,6 +218,10 @@ body div.experience-header h3 {
     transform: translateY(-1px);
 }
 
+.testimonial-link i {
+    font-size: 11px;
+}
+
 .testimonial-link:focus-visible {
     box-shadow: 0 0 0 2px var(--accent-blue-soft);
     outline: none;
@@ -689,11 +693,13 @@ body:has(.flex-center) nav {
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease !important;
 }
 
-.next-page-indicator:hover {
-    background: rgba(91, 140, 255, 0.18) !important;
-    border-color: var(--accent-blue-soft) !important;
-    color: #ffffff !important;
-    transform: translateY(-2px) !important;
+@media (hover: hover) and (pointer: fine) {
+    .next-page-indicator:hover {
+        background: rgba(91, 140, 255, 0.18) !important;
+        border-color: var(--accent-blue-soft) !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+    }
 }
 
 .next-page-indicator:active {
@@ -754,7 +760,12 @@ div[style*="display:grid"],
     }
 
     #colorlib-hero .arrow-wrapper {
-        bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+        bottom: calc(32px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    #colorlib-hero {
+        height: 100svh !important;
+        min-height: 100svh !important;
     }
 
     .next-page-indicator {
