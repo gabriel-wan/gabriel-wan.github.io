@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The 64-bit bug that broke my Telegram bot — Gabriel Wan</title>
+  <meta name="description" content="How a Telegram user ID ended up stored as 6123456789.0 in SQLite, and why it only affected users with large IDs.">
+  <meta name="author" content="Gabriel Wan">
+  <link rel="canonical" href="https://gabrielwan.me/notes/the-64-bit-bug.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Gabriel Wan">
+  <meta property="og:title" content="The 64-bit bug that broke my Telegram bot">
+  <meta property="og:description" content="How a Telegram user ID ended up stored as 6123456789.0 in SQLite, and why it only affected users with large IDs.">
+  <meta property="og:url" content="https://gabrielwan.me/notes/the-64-bit-bug.html">
+  <meta property="og:image" content="https://gabrielwan.me/images/og.png">
+  <meta property="article:published_time" content="2026-09-23">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#000000">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Public+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/site.css">
+  <script src="/js/reveal.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header col">
+    <div class="site-bar">
+      <nav class="site-nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/projects/">Projects</a>
+        <a href="/notes/" aria-current="page">Notes</a>
+        <a class="ext" href="/Gabriel_Wan_CV.pdf" target="_blank" rel="noopener">Resume<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </nav>
+      <div class="header-tools">
+        <a href="mailto:gabrielwanjp@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+        <a href="https://www.linkedin.com/in/gabrielwanjp/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="https://github.com/gabriel-wan" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <header class="col page-head">
+        <p class="crumb"><a href="/notes/">Notes</a></p>
+        <h1>The 64-bit bug that broke my Telegram bot</h1>
+        <p class="dek">How a Telegram user ID ended up stored as <code>6123456789.0</code>, and why it only affected some people.</p>
+        <p class="dateline"><time datetime="2026-09-23">23 Sep 2026</time> · 4 minute read · About <a href="/projects/lounge-booking.html">Lounge Booking</a></p>
+      </header>
+
+      <section class="col sec">
+        <p>In February I was reworking the lounge booking Mini App for my residential college, which about 130 residents use now. Some residents, about 40% of them, couldn't see their own bookings.</p>
+        <p>When a bug only hits some users, the first thing to work out is what those users have in common. Here it was the size of their Telegram ID. (I'll use 6123456789 as the example throughout. It isn't a real person's ID.)</p>
+      </section>
+
+      <section class="col sec">
+        <h2>How it happened</h2>
+        <h3>Telegram IDs can be big</h3>
+        <p>Telegram's docs say a user ID can need more than 32 bits, though never more than 52, so a 64-bit integer or a double can always hold one. Plenty of real IDs are bigger than 2,147,483,647, the largest number a signed 32-bit integer can hold.</p>
+        <h3>JavaScript handles them fine</h3>
+        <p>A JavaScript number is a 64-bit float, which stores whole numbers exactly up to 2<sup>53</sup>. In Node, 6123456789 is still exactly 6123456789.</p>
+        <h3>The SQLite driver treats them differently</h3>
+        <p>When <code>node-sqlite3</code> passes a JavaScript number into a query, it checks whether the number fits in a 32-bit integer. If it does, it's sent as an integer. If it doesn't, it's sent as a floating-point number. The logic is in <code>src/statement.cc</code>.</p>
+<pre><code>// node-sqlite3, simplified from src/statement.cc
+if (fitsInInt32(value)) bindAsInteger(value)   // 123456789
+else                    bindAsFloat(value)     // 6123456789.0</code></pre>
+        <p>So small IDs reached SQLite as integers and big ones reached it as floats.</p>
+        <h3>The column was text</h3>
+        <p>The <code>telegram_id</code> column was declared as text, which was the right idea. But SQLite converts whatever it gets into the column's type, and a float with nothing after the decimal point becomes text ending in ".0". You can reproduce it in a few lines of Python:</p>
+<pre><code>db.execute("CREATE TABLE users (telegram_id TEXT UNIQUE)")
+db.execute("INSERT INTO users VALUES (?)", (123456789,))     # integer
+db.execute("INSERT INTO users VALUES (?)", (6123456789.0,))  # float
+db.execute("SELECT telegram_id FROM users").fetchall()
+# [('123456789',), ('6123456789.0',)]</code></pre>
+        <h3>The lookup came from the URL</h3>
+        <p>The "my bookings" endpoint read the ID from the URL, <code>/api/bookings/user/6123456789</code>. Anything from a URL is a string, so the query compared "6123456789" with the stored "6123456789.0", and they never matched. The bookings were in the database. The app just couldn't find them.</p>
+        <p>For anyone whose ID fit in 32 bits, every step went through cleanly. For everyone else, it broke. That was the 40%.</p>
+      </section>
+
+      <section class="col sec">
+        <h2>The fix</h2>
+        <p>The fix I shipped turns the ID into a plain string everywhere it enters the backend: when a user is created, when bookings are looked up and when one is cancelled.</p>
+<pre><code>const cleanId = String(telegramUser.id).split('.')[0];</code></pre>
+        <p>It works, but it's a fix at every entry point. If I were starting again, I'd turn the ID into a string once, as soon as it arrives from Telegram, and never let it be a number anywhere in the code.</p>
+      </section>
+
+      <section class="col sec">
+        <h2>What I took from it</h2>
+        <p>You never do maths on an ID, so it shouldn't be a number. The same goes for phone numbers, postal codes and student numbers.</p>
+        <p>The value went through Telegram's JSON, JavaScript, the driver and SQLite, then came back out through a URL. Each of those steps was reasonable on its own, and the bug was in how they fit together. Now I check what type a value is after it crosses one of those boundaries.</p>
+        <p>Whether you ever see this bug depends on whose accounts you test with, which is a good reason to test with data that looks like your real users' and not just your own.</p>
+        <p>The rest of the project, including a rate limiter that got confused by a proxy, is in the <a href="/projects/lounge-booking.html">Lounge Booking write-up</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer col">
+    <div class="site-bar">
+      <p>© 2026 Gabriel Wan</p>
+    </div>
+  </footer>
+</body>
+</html>
