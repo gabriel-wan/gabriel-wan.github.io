@@ -96,6 +96,8 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 }
 .skip:focus { left: 16px; }
 
+.nw { white-space: nowrap; }
+
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -129,15 +131,19 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 
 /* ---------- header / footer ---------- */
 
+/* header and footer span the wide column, so the nav sits left of the text and the icons end with the headline */
+.col > .site-bar { grid-column: wide; }
+
 .site-header .site-bar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   padding: 24px 0;
 }
 
-.site-nav { display: flex; gap: 24px; font-size: 15px; }
+.site-nav { display: flex; gap: 28px; font-size: 15px; }
 .site-nav a { color: var(--text-2); text-decoration: none; padding: 10px 0; margin: -10px 0; }
 .site-nav a:hover { color: var(--text); }
 .site-nav .ext { display: inline-flex; align-items: center; gap: 3px; }
@@ -150,10 +156,10 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   text-underline-offset: 7px;
 }
 
-.header-tools { display: flex; align-items: center; gap: 18px; }
+.header-tools { display: flex; align-items: center; gap: 22px; }
 .header-tools a { display: inline-flex; color: var(--text-2); text-decoration: none; padding: 9px; margin: -9px; }
 .header-tools a:hover { color: var(--text); }
-.header-tools svg { width: 20px; height: 20px; display: block; }
+.header-tools svg { width: 24px; height: 24px; display: block; }
 
 .site-footer { margin-top: 96px; padding-bottom: 56px; font-size: var(--fs-meta); color: var(--text-3); }
 .site-footer .site-bar {
@@ -193,7 +199,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 
 /* ---------- headings and text roles ---------- */
 
-.hero { padding-top: 96px; }
+.hero { padding-top: 80px; }
 .hero h1 {
   grid-column: content-start / wide-end;
   font-family: var(--serif);
@@ -244,9 +250,9 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   content: "";
   grid-column: content;
   border-top: 1px solid var(--line);
-  margin-bottom: 56px;
+  margin-bottom: 44px;
 }
-.group-head { padding-top: 72px; }
+.group-head { padding-top: 56px; }
 .group-head h2 { margin-bottom: 24px; }
 
 /* compact list: date on the left, title and one line on the right */
@@ -352,14 +358,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
    strip sideways as the page scrolls. Otherwise the strip scrolls or swipes sideways. */
 
 .wheel-section { --item: min(26rem, 76vw); }
-.wheel-section.is-pinned .wheel-stage {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+.wheel-section.is-pinned .wheel-stage { position: sticky; top: var(--pin-top, 0px); }
 
 .col > .wheel {
   grid-column: full;
@@ -453,8 +452,8 @@ html:not(.js) .wheel-progress { display: none; }
   .hero { padding-top: 56px; }
   .page-head { padding-top: 48px; }
   .sec { padding-top: 48px; }
-  .group-head { padding-top: 56px; }
-  .group-head::before { margin-bottom: 40px; }
+  .group-head { padding-top: 44px; }
+  .group-head::before { margin-bottom: 32px; }
   .about { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .shot-phone .frame { padding: 28px 16px; }
   .about img { max-width: 180px; }
@@ -467,21 +466,26 @@ html:not(.js) .wheel-progress { display: none; }
   .index.projects > li { grid-template-columns: minmax(0, 1fr); }
   .index.projects .art { height: 11rem; margin-bottom: 16px; }
   .dialogue p { grid-template-columns: minmax(0, 1fr); gap: 0; margin-bottom: 14px; }
+  .artifact .bars, .artifact .bars tbody { display: block; }
+  .artifact .bars tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 16px; padding: 8px 0; }
+  .artifact .bars th { grid-column: 1 / -1; padding: 0 0 6px; white-space: normal; }
+  .artifact .bars td { padding: 0; }
   .pager { grid-template-columns: minmax(0, 1fr); }
   .pager .next { text-align: left; }
   .post .sec > p, .post .sec > ul { font-size: 17px; }
 }
 
 @media (max-width: 480px) {
-  .site-nav { gap: 15px; }
-  .header-tools { gap: 13px; }
-  .header-tools svg { width: 18px; height: 18px; }
+  .site-nav { gap: 14px; font-size: 14px; }
+  .header-tools { gap: 12px; }
+  .header-tools svg { width: 20px; height: 20px; }
   .header-tools a { padding: 6px; margin: -6px; }
 }
 
 @media (max-width: 360px) {
   .site-nav { gap: 11px; }
   .header-tools { gap: 10px; }
+  .header-tools a { padding: 5px; margin: -5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

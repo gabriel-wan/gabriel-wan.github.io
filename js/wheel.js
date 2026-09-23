@@ -16,6 +16,7 @@
     var items = Array.prototype.slice.call(track.children);
     var pinned = false;
     var distance = 0;
+    var pinTop = 0;
     var active = -1;
 
     // How far the strip has to move for this item to sit in the centre.
@@ -26,7 +27,7 @@
     function update() {
       var position, progress;
       if (pinned) {
-        progress = distance ? Math.min(1, Math.max(0, -section.getBoundingClientRect().top / distance)) : 0;
+        progress = distance ? Math.min(1, Math.max(0, (pinTop - section.getBoundingClientRect().top) / distance)) : 0;
         position = progress * distance;
         track.style.transform = "translate3d(" + -position + "px, 0, 0)";
         if (wheel.scrollLeft) wheel.scrollLeft = 0;
@@ -61,8 +62,12 @@
           track.style.transform = "";
         }
       }
-      // The pinned stage is one screen tall; the extra height is the sideways distance.
-      if (pinned) section.style.height = stage.offsetHeight + distance + "px";
+      // The stage sticks centred on screen; the section's extra height is the sideways distance.
+      if (pinned) {
+        pinTop = Math.max(0, (window.innerHeight - stage.offsetHeight) / 2);
+        section.style.setProperty("--pin-top", pinTop + "px");
+        section.style.height = stage.offsetHeight + distance + "px";
+      }
       update();
     }
 
@@ -88,7 +93,7 @@
         if (!pinned) return;
         var target = Math.min(distance, Math.max(0, offsetFor(item)));
         setTimeout(function () {
-          window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY + target);
+          window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY - pinTop + target);
         }, 0);
       });
     });
