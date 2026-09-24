@@ -25,7 +25,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      # npm install rather than npm ci: a lock file written on Windows can miss entries
+      # that only Linux needs (it happened with @emnapi/*), and npm ci refuses to fill them in.
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
