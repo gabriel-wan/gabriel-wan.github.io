@@ -205,48 +205,92 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .entry-row .shim { margin-top: 14px; }
 .entry-row .shim svg { width: 14px; height: 14px; }
 
-/* ---------- home: the night sky behind the headline (components/horizon-scene.tsx) ----------
-   It starts behind the header and ends in a black ridge that runs into the page.
-   --p is scroll progress through the hero: far layers move less than near ones. */
+/* ---------- home: the night sky (components/horizon-scene.tsx) ----------
+   Fixed behind the whole home page. --hero goes 0 to 1 over the first screen of
+   scrolling (mountains sink, glow dims so the text reads easily); --dawn goes 0 to 1
+   as you reach the footer (sky warms, stars fade, a sun rises behind the mountains). */
 
 .hero.horizon { min-height: max(560px, calc(100svh - 73px)); padding-top: 13vh; align-content: start; }
-.col > .horizon-scene {
-  grid-column: full;
-  position: absolute;
-  top: -73px;
-  bottom: 0;
+.horizon-scene {
+  --hero: 0;
+  --dawn: 0;
+  --sink: calc(var(--hero) * (1 - var(--dawn)));
+  position: fixed;
   left: 0;
   right: 0;
+  top: 0;
+  height: 100lvh;
+  z-index: -1;
   overflow: hidden;
   pointer-events: none;
 }
-.horizon-stars { position: absolute; left: 0; top: 0; width: 100%; height: 72%; transform: translateY(calc(var(--p, 0) * 22%)); }
+.horizon-stars { position: absolute; left: 0; top: 0; width: 100%; height: 75%; opacity: calc(1 - var(--hero) * 0.25 - var(--dawn) * 0.6); }
+.horizon-dawn {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(205, 180, 130, 0.2) 0%, rgba(144, 189, 226, 0.12) 30%, transparent 62%);
+  opacity: var(--dawn);
+}
 .horizon-glow {
   position: absolute;
   left: 50%;
   bottom: 12%;
   width: min(1400px, 150%);
   height: 70%;
-  transform: translate(-32%, calc(var(--p, 0) * 18%));
+  transform: translate(-32%, calc(var(--sink) * 22%)) scale(calc(1 + var(--dawn) * 0.25));
+  transform-origin: 50% 100%;
   background:
     radial-gradient(ellipse 34% 30% at 50% 100%, rgba(236, 214, 170, 0.55), transparent 70%),
     radial-gradient(ellipse 60% 55% at 50% 100%, rgba(205, 180, 130, 0.28), transparent 70%),
     radial-gradient(ellipse 85% 80% at 50% 100%, rgba(144, 189, 226, 0.2), transparent 72%);
-  opacity: calc(1 - var(--p, 0) * 0.7);
+  opacity: calc(1 - var(--hero) * 0.6 + var(--dawn) * 0.8);
 }
-.horizon-ridges { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; }
+.horizon-sun {
+  position: absolute;
+  left: 84%;
+  bottom: 17%;
+  width: 26vh;
+  height: 26vh;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 244, 222, 0.9) 0%, rgba(236, 214, 170, 0.55) 26%, rgba(205, 180, 130, 0.18) 48%, rgba(205, 180, 130, 0) 68%);
+  transform: translate(-50%, calc((1 - var(--dawn)) * 80%));
+  opacity: var(--dawn);
+}
+.horizon-ridges { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; transform: translateY(calc(var(--sink) * 30%)); }
 .ridge { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
-.ridge-back { fill: #121b24; transform: translateY(calc(var(--p, 0) * 16%)); }
-.ridge-mid { fill: #080d12; transform: translateY(calc(var(--p, 0) * 8%)); }
+.ridge-back { fill: #121b24; transform: translateY(calc(var(--sink) * -6%)); }
+.ridge-mid { fill: #080d12; }
 .ridge-front { fill: #000; }
 .hero.horizon > h1, .hero.horizon > .lede {
-  transform: translateY(calc(var(--p, 0) * -70px));
-  opacity: calc(1 - var(--p, 0) * 1.4);
+  transform: translateY(calc(var(--hp, 0) * -70px));
+  opacity: calc(1 - var(--hp, 0) * 1.4);
 }
 @media (prefers-reduced-motion: no-preference) {
   .horizon-glow { animation: horizon-breathe 9s ease-in-out infinite alternate; }
 }
 @keyframes horizon-breathe { from { filter: brightness(0.92); } to { filter: brightness(1.08); } }
+@media (max-width: 760px) {
+  .horizon-ridges { height: 32%; }
+  .horizon-sun { left: 80%; bottom: 13%; width: 18vh; height: 18vh; }
+}
+
+/* ---------- other pages: a still band of stars at the top (components/sky-strip.tsx) ---------- */
+
+.sky-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 440px;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(ellipse 70% 60% at 75% 0%, rgba(144, 189, 226, 0.07), transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent);
+}
+.sky-strip svg { width: 100%; height: 100%; fill: #e4e8ec; }
+@media (max-width: 760px) { .sky-strip { height: 320px; } }
 
 /* ---------- headings and text roles ---------- */
 

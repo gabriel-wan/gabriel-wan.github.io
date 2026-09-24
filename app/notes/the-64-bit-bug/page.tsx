@@ -1,4 +1,5 @@
 import { pageMeta } from "@/lib/metadata";
+import { SkyStrip } from "@/components/sky-strip";
 import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
@@ -12,6 +13,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
+    <SkyStrip />
     <article className="post">
       <header className="col page-head">
         <p className="crumb"><a href="/notes">Notes</a></p>

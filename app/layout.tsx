@@ -11,7 +11,7 @@ const FONTS = "https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6.
 export const metadata: Metadata = {
   metadataBase: new URL("https://gabrielwan.me"),
   authors: [{ name: "Gabriel Wan" }],
-  openGraph: { siteName: "Gabriel Wan", type: "website", images: ["/images/og.png"] },
+  openGraph: { siteName: "Gabriel Wan", type: "website", images: ["/images/og.png?v=2"] },
   twitter: { card: "summary_large_image" },
   icons: {
     icon: [

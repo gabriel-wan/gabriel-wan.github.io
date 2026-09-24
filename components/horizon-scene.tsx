@@ -2,10 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
-// A night sky behind the home headline, after 21st.dev's "Horizon Hero Section" but
-// without three.js: twinkling stars on a canvas, a glow on the horizon, and three
-// mountain ridges that move at different speeds as you scroll (--p on the section).
-// With reduced motion the stars are drawn once and nothing moves.
+// The night sky behind the whole home page, after 21st.dev's "Horizon Hero Section"
+// but without three.js. It stays fixed behind the page and changes as you scroll:
+// at the top it's the full night scene; while you read, the mountains sink and the
+// glow dims (--hero); as you reach the footer the sky warms and a sun rises (--dawn).
+// With reduced motion the stars are drawn once and the scene stays as it is.
 
 const W = 1440;
 const H = 320;
@@ -35,6 +36,8 @@ const RIDGES = [
 
 type Star = { x: number; y: number; r: number; a: number; speed: number; phase: number };
 
+const clamp = (v: number) => Math.min(1, Math.max(0, v));
+
 export function HorizonScene() {
   const sceneRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -42,44 +45,49 @@ export function HorizonScene() {
   useEffect(() => {
     const scene = sceneRef.current;
     const canvas = canvasRef.current;
-    const section = scene?.parentElement;
+    const hero = scene?.parentElement;
     const ctx = canvas?.getContext("2d");
-    if (!scene || !canvas || !section || !ctx) return;
+    if (!scene || !canvas || !hero || !ctx) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let stars: Star[] = [];
     let width = 0;
     let height = 0;
-    let dpr = 1;
-    let running = false;
     let frame = 0;
     let shooting: { x: number; y: number; vx: number; vy: number; life: number } | null = null;
     let nextShot = performance.now() + 4000;
 
     function size() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = canvas!.clientWidth;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      // Phones resize the viewport as the address bar hides; only redraw the stars
+      // when the width changes, so they don't jump around.
+      const w = canvas!.clientWidth;
+      if (w === width && stars.length) return;
+      width = w;
       height = canvas!.clientHeight;
       canvas!.width = Math.round(width * dpr);
       canvas!.height = Math.round(height * dpr);
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.round((width * height) / 5200);
-      stars = Array.from({ length: count }, () => {
-        const y = Math.random() ** 1.6 * height * 0.8; // denser high up, thinning towards the horizon
-        return { x: Math.random() * width, y, r: Math.random() * 1.1 + 0.25, a: Math.random() * 0.6 + 0.25, speed: Math.random() * 1.4 + 0.4, phase: Math.random() * Math.PI * 2 };
-      });
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() ** 1.6 * height * 0.85, // denser high up, thinning towards the horizon
+        r: Math.random() * 1.1 + 0.25,
+        a: Math.random() * 0.6 + 0.25,
+        speed: Math.random() * 1.4 + 0.4,
+        phase: Math.random() * Math.PI * 2,
+      }));
     }
 
     function draw(t: number) {
       ctx!.clearRect(0, 0, width, height);
       const drift = reduce ? 0 : (t / 1000) * 3; // the sky turns a few pixels a second
+      ctx!.fillStyle = "#e4e8ec";
       for (const s of stars) {
         const twinkle = reduce ? 1 : 0.65 + 0.35 * Math.sin((t / 1000) * s.speed + s.phase);
-        const x = (s.x + drift) % width;
         ctx!.globalAlpha = s.a * twinkle;
-        ctx!.fillStyle = "#e4e8ec";
         ctx!.beginPath();
-        ctx!.arc(x, s.y, s.r, 0, Math.PI * 2);
+        ctx!.arc((s.x + drift) % width, s.y, s.r, 0, Math.PI * 2);
         ctx!.fill();
       }
       if (!reduce) {
@@ -110,13 +118,16 @@ export function HorizonScene() {
 
     function loop(t: number) {
       draw(t);
-      if (running) frame = requestAnimationFrame(loop);
+      frame = requestAnimationFrame(loop);
     }
 
-    // Scroll progress through the hero: 0 at the top, 1 once it has scrolled away.
     function onScroll() {
-      const p = Math.min(1, Math.max(0, window.scrollY / section!.offsetHeight));
-      section!.style.setProperty("--p", p.toFixed(4));
+      const vh = window.innerHeight;
+      const y = window.scrollY;
+      const max = document.documentElement.scrollHeight - vh;
+      scene!.style.setProperty("--hero", clamp(y / (vh * 0.8)).toFixed(4));
+      scene!.style.setProperty("--dawn", (max > 0 ? clamp(1 - (max - y) / (vh * 0.4)) : 0).toFixed(4));
+      hero!.style.setProperty("--hp", clamp(y / hero!.offsetHeight).toFixed(4));
     }
 
     size();
@@ -125,31 +136,18 @@ export function HorizonScene() {
     } else {
       onScroll();
       window.addEventListener("scroll", onScroll, { passive: true });
+      frame = requestAnimationFrame(loop);
     }
-
-    // Only animate while the sky is on screen.
-    const observer = new IntersectionObserver(([entry]) => {
-      if (reduce) return;
-      if (entry.isIntersecting && !running) {
-        running = true;
-        frame = requestAnimationFrame(loop);
-      } else if (!entry.isIntersecting) {
-        running = false;
-        cancelAnimationFrame(frame);
-      }
-    });
-    observer.observe(scene);
 
     const onResize = () => {
       size();
       if (reduce) draw(0);
+      else onScroll();
     };
     window.addEventListener("resize", onResize);
 
     return () => {
-      running = false;
       cancelAnimationFrame(frame);
-      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
@@ -158,7 +156,9 @@ export function HorizonScene() {
   return (
     <div ref={sceneRef} className="horizon-scene" aria-hidden="true">
       <canvas ref={canvasRef} className="horizon-stars" />
+      <div className="horizon-dawn" />
       <div className="horizon-glow" />
+      <div className="horizon-sun" />
       <div className="horizon-ridges">
         {RIDGES.map((r) => (
           <svg key={r.className} className={r.className} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax slice">

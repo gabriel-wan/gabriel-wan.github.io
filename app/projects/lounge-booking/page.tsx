@@ -1,5 +1,6 @@
 import { pageMeta } from "@/lib/metadata";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
+import { SkyStrip } from "@/components/sky-strip";
 import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
@@ -13,6 +14,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
+    <SkyStrip />
     <article>
       <header className="col page-head">
         <p className="crumb"><a href="/projects">Projects</a></p>
@@ -20,7 +22,7 @@ export default function Page() {
         <Reveal as="p" className="dek">A Telegram Mini App for booking the three shared lounges in my residential college at NUS. About 130 residents use it, and for a while a bug broke it for 40% of them.</Reveal>
         <p className="dateline">Feb 2026 – now · In use by about 130 residents</p>
         <div className="actions">
-          <ShimmerLink background="#90bde2" shimmerColor="#ffffff" shimmerSize="0.1em" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium text-black" href="https://github.com/Garuda-Techs/LoungeBookingBot">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          <ShimmerLink background="#151e28" shimmerColor="#d6ebff" shimmerSize="2px" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium border-white/25" href="https://github.com/Garuda-Techs/LoungeBookingBot">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
         </div>
         <figure className="wide artifact shot-phone">
           <div className="frame"><img src="/images/lounge-booking.jpg" alt="The app: a floor switcher for Levels 9 to 11, upcoming bookings for Level 9, a month calendar and a My Bookings list" width="450" height="850" /></div>

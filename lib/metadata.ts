@@ -21,7 +21,7 @@ export function pageMeta(m: {
       title: m.ogTitle ?? m.title.replace(" — Gabriel Wan", ""),
       description: m.description,
       url: m.path,
-      images: ["/images/og.png"],
+      images: ["/images/og.png?v=2"],
       ...(m.type === "article" ? { type: "article", publishedTime: m.published } : { type: "website" }),
     },
   };
