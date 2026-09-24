@@ -431,8 +431,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 
 /* ---------- home: about, work, education ---------- */
 
-.col > .about { grid-column: content-start / wide-end; }
-.about { display: grid; grid-template-columns: 13.75rem minmax(0, 1fr); gap: 32px; align-items: start; }
+.about { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 28px; align-items: start; }
 .about img { border-radius: 2px; }
 .about p { margin: 0 0 16px; }
 .about p:last-child { margin-bottom: 0; }
