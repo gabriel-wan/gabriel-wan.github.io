@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./site.css" layer(base);
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-bodoni: "Bodoni Moda";
+  --font-public-sans: "Public Sans";
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-public-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-bodoni), Didot, "Bodoni 72", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-heading: var(--font-bodoni), Didot, "Bodoni 72", Georgia, serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* The site is dark only. shadcn / 21st components read these; they match app/site.css. */
+:root,
+.dark {
+  --background: #000000;
+  --foreground: #e4e8ec;
+  --card: #0d0f11;
+  --card-foreground: #e4e8ec;
+  --popover: #0d0f11;
+  --popover-foreground: #e4e8ec;
+  --primary: #90bde2;
+  --primary-foreground: #000000;
+  --secondary: #1f2327;
+  --secondary-foreground: #e4e8ec;
+  --muted: #0d0f11;
+  --muted-foreground: #8d959c;
+  --accent: #16191c;
+  --accent-foreground: #e4e8ec;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #1f2327;
+  --input: #373d41;
+  --ring: #90bde2;
+  --chart-1: #90bde2;
+  --chart-2: #cdb482;
+  --chart-3: #8d959c;
+  --chart-4: #5a6268;
+  --chart-5: #373d41;
+  --radius: 0.375rem;
+  --sidebar: #0d0f11;
+  --sidebar-foreground: #e4e8ec;
+  --sidebar-primary: #90bde2;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #16191c;
+  --sidebar-accent-foreground: #e4e8ec;
+  --sidebar-border: #1f2327;
+  --sidebar-ring: #90bde2;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
