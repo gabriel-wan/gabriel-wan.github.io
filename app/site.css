@@ -165,6 +165,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .header-tools a { display: inline-flex; color: var(--text-2); text-decoration: none; padding: 9px; margin: -9px; }
 .header-tools a:hover { color: var(--text); }
 .header-tools svg { width: 24px; height: 24px; display: block; }
+.header-tools svg.icon-mail { width: 27px; height: 21.6px; }
 
 .site-footer { margin-top: 96px; padding-bottom: 56px; font-size: var(--fs-meta); color: var(--text-3); }
 .site-footer .site-bar {
@@ -569,16 +570,17 @@ html:not(.js) .wheel-progress { display: none; }
 }
 
 @media (max-width: 480px) {
-  .site-nav { gap: 14px; font-size: 14px; }
-  .header-tools { gap: 12px; }
+  .site-nav { gap: 13px; font-size: 14px; }
+  .header-tools { gap: 11px; }
   .header-tools svg { width: 20px; height: 20px; }
-  .header-tools a { padding: 6px; margin: -6px; }
+  .header-tools svg.icon-mail { width: 22.5px; height: 18px; }
+  .header-tools a { padding: 5px; margin: -5px; }
 }
 
 @media (max-width: 360px) {
-  .site-nav { gap: 11px; }
-  .header-tools { gap: 10px; }
-  .header-tools a { padding: 5px; margin: -5px; }
+  .site-nav { gap: 9px; }
+  .header-tools { gap: 9px; }
+  .header-tools a { padding: 4px; margin: -4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
