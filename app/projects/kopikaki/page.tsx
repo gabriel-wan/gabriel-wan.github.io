@@ -1,4 +1,5 @@
 import { pageMeta } from "@/lib/metadata";
+import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
@@ -19,8 +20,8 @@ export default function Page() {
         <Reveal as="p" className="dek">A voice assistant for seniors. You call it, say what you feel like doing, and it tries to set up a meetup with a real person nearby. We built it at the Build with Gemini hackathon.</Reveal>
         <p className="dateline">Aug 2026 · Build with Gemini hackathon, Best Elderly Hack track</p>
         <div className="actions">
-          <a className="btn btn-small" href="https://kopikaki--kopikakis-cc6d5.asia-southeast1.hosted.app/">Try it<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
-          <a className="btn btn-small" href="https://github.com/gabriel-wan/kopikaki">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+          <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="https://kopikaki--kopikakis-cc6d5.asia-southeast1.hosted.app/">Try it<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="https://github.com/gabriel-wan/kopikaki">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
         </div>
         <figure className="artifact dialogue">
           <p><span className="who">Uncle</span><span className="human">Hello KopiKaki.</span></p>

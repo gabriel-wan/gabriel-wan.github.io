@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { RevealObserver } from "@/components/reveal-observer";
 import { SiteHeader } from "@/components/site-header";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import "./globals.css";
 
 // Loaded straight from Google Fonts (not next/font) so Bodoni keeps the same optical
@@ -43,6 +44,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <footer className="site-footer col">
           <div className="site-bar">
             <p>© 2026 Gabriel Wan</p>
+          </div>
+          <div className="wordmark">
+            <TextHoverEffect text="Gabriel Wan" />
           </div>
         </footer>
         <RevealObserver />

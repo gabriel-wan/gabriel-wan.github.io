@@ -11,7 +11,7 @@
   --line: #1f2327;
   --line-2: #373d41;
   --line-3: #5a6268;
-  --accent: #90bde2;
+  --blue: #90bde2;
   --flag: #cdb482;
 
   --serif: var(--font-bodoni), Didot, "Bodoni 72", Georgia, serif;
@@ -52,7 +52,7 @@ h1, h2, h3 { color: var(--text); margin: 0; font-weight: 400; }
 h1, h2 { text-wrap: balance; }
 
 a {
-  color: var(--accent);
+  color: var(--blue);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -61,7 +61,7 @@ a {
 }
 a:hover { text-decoration-color: currentColor; }
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
 
 strong { font-weight: 600; }
 
@@ -154,7 +154,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .site-nav a[aria-current="page"] {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--blue);
   text-underline-offset: 7px;
 }
 
@@ -173,6 +173,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   padding-top: 28px;
 }
 .site-footer p { margin: 0; }
+.col > .wordmark { grid-column: wide; margin-top: 24px; }
 .site-footer a { color: var(--text-2); }
 
 /* ---------- buttons ---------- */
@@ -183,9 +184,9 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 9%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--blue) 40%, transparent);
   border-radius: 2px;
   padding: 10px 18px;
   font-size: 15px;
@@ -194,14 +195,33 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   text-decoration: none;
   transition: background-color 150ms, border-color 150ms, color 150ms;
 }
-.btn:hover { background: color-mix(in srgb, var(--accent) 17%, transparent); border-color: var(--accent); }
+.btn:hover { background: color-mix(in srgb, var(--blue) 17%, transparent); border-color: var(--blue); }
 .btn svg { width: 16px; height: 16px; flex: none; }
 .btn-small { gap: 6px; padding: 7px 12px; font-size: 13px; }
 .btn-small svg { width: 14px; height: 14px; }
 
+/* shimmer buttons (components/ui/shimmer-button.tsx) */
+.shim svg { width: 16px; height: 16px; flex: none; }
+.entry-row .shim { margin-top: 14px; }
+.entry-row .shim svg { width: 14px; height: 14px; }
+
 /* ---------- headings and text roles ---------- */
 
-.hero { padding-top: 80px; }
+.hero { padding-top: 80px; position: relative; }
+.hero > :not(.hero-light) { position: relative; z-index: 2; }
+/* the Spotlight beam: starts above the header, fades out below the intro */
+.col > .hero-light {
+  grid-column: full;
+  position: absolute;
+  top: -110px;
+  bottom: -260px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
 .hero h1 {
   grid-column: content-start / wide-end;
   font-family: var(--serif);
@@ -264,7 +284,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .index .date { font-size: var(--fs-meta); color: var(--text-3); font-variant-numeric: tabular-nums; }
 .index h3, .index .item { font-family: var(--serif); font-size: var(--fs-h2); font-weight: 400; line-height: 1.15; }
 .index h3 a, .index .item a { color: var(--text); text-decoration: none; }
-.index h3 a:hover, .index .item a:hover { color: var(--accent); }
+.index h3 a:hover, .index .item a:hover { color: var(--blue); }
 .index p { margin: 4px 0 0; color: var(--text-2); }
 .index .date { padding-top: 12px; }
 .index + p { margin-top: 20px; }
@@ -275,7 +295,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .index.projects .art.is-image { padding: 0; }
 .index.projects .date { display: block; padding-top: 0; margin: -2px 0 4px; }
 .index.projects .item a::after { content: ""; position: absolute; inset: 0; }
-.index.projects li:hover .item a { color: var(--accent); }
+.index.projects li:hover .item a { color: var(--blue); }
 .index.projects li:hover .art { border-color: var(--line-3); }
 
 
@@ -291,7 +311,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .bars td.num { text-align: right; padding-left: 20px; font-variant-numeric: tabular-nums; color: var(--text-2); white-space: nowrap; }
 .bar { display: block; height: 10px; width: var(--v); min-width: 3px; background: var(--line-2); }
 .bars .is-hi th, .bars .is-hi td.num { color: var(--text); }
-.bars .is-hi .bar { background: var(--accent); }
+.bars .is-hi .bar { background: var(--blue); }
 .bars .is-flag th, .bars .is-flag td.num { color: var(--flag); }
 
 .shot img { border: 1px solid var(--line-2); }
@@ -332,7 +352,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   border-top: 1px solid var(--line);
 }
 .pager a { text-decoration: none; color: var(--text); font-family: var(--serif); font-size: var(--fs-h3); line-height: 1.25; }
-.pager a:hover { color: var(--accent); }
+.pager a:hover { color: var(--blue); }
 .pager span { display: block; font-family: var(--sans); font-size: var(--fs-meta); color: var(--text-3); margin-bottom: 4px; }
 .pager .next { text-align: right; }
 
@@ -385,7 +405,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .wheel.ready .wheel-item { opacity: 0.4; transform: scale(0.94); }
 .wheel.ready .wheel-item.is-active { opacity: 1; transform: none; }
 .wheel-link { display: block; color: inherit; text-decoration: none; }
-.wheel-link:hover h3 { color: var(--accent); }
+.wheel-link:hover h3 { color: var(--blue); }
 .art {
   height: 15rem;
   display: flex;
