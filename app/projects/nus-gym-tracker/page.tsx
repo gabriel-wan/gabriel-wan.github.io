@@ -21,8 +21,8 @@ export default function Page() {
         <Reveal as="p" className="dek">NUS shows how full its gyms are right now, but keeps no history. I wrote a Telegram bot that tells you how busy the gyms are and saves a reading every 5 minutes, so there will eventually be enough data to say when they're usually quiet.</Reveal>
         <p className="dateline">Sep 2026 – ongoing · Live, collecting since 18 September</p>
         <div className="actions">
-          <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="https://t.me/NUSGymTrackerBot">Open @NUSGymTrackerBot<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
-          <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="https://github.com/gabriel-wan/nus-gym-tracker">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          <ShimmerLink background="#90bde2" shimmerColor="#ffffff" shimmerSize="0.1em" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium text-black" href="https://t.me/NUSGymTrackerBot">Open @NUSGymTrackerBot<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          <ShimmerLink background="#90bde2" shimmerColor="#ffffff" shimmerSize="0.1em" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium text-black" href="https://github.com/gabriel-wan/nus-gym-tracker">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
         </div>
         <figure className="wide artifact">
           <table className="bars">

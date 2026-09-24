@@ -53,11 +53,6 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
-  @keyframes spotlight {
-    0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
-    100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
-  }
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
   @keyframes shimmer-slide {
@@ -131,5 +126,4 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .animate-shimmer-slide, .animate-spin-around { animation: none; }
-  .animate-spotlight { animation: none; opacity: 1; transform: translate(-50%, -40%); }
 }

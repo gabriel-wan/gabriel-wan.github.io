@@ -21,7 +21,7 @@ export default function Page() {
         <Reveal as="p" className="dek">I fine-tuned an open-source language model on my own Telegram messages to see if it could learn to text like me. It picked up most of my habits, from the lowercase and the Singlish to replying in short bursts.</Reveal>
         <p className="dateline">Aug – Sep 2026 · Working, as a private Telegram bot</p>
         <div className="actions">
-          <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="https://github.com/gabriel-wan/mini-gabriel">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          <ShimmerLink background="#90bde2" shimmerColor="#ffffff" shimmerSize="0.1em" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium text-black" href="https://github.com/gabriel-wan/mini-gabriel">Code on GitHub<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
         </div>
         <figure className="wide artifact">
           <table className="bars">

@@ -136,6 +136,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 /* header and footer span the wide column, so the nav sits left of the text and the icons end with the headline */
 .col > .site-bar { grid-column: wide; }
 
+.site-header { position: relative; z-index: 3; }
 .site-header .site-bar {
   display: flex;
   flex-wrap: wrap;
@@ -173,7 +174,6 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   padding-top: 28px;
 }
 .site-footer p { margin: 0; }
-.col > .wordmark { grid-column: wide; margin-top: 24px; }
 .site-footer a { color: var(--text-2); }
 
 /* ---------- buttons ---------- */
@@ -205,23 +205,53 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .entry-row .shim { margin-top: 14px; }
 .entry-row .shim svg { width: 14px; height: 14px; }
 
-/* ---------- headings and text roles ---------- */
+/* ---------- home: the night sky behind the headline (components/horizon-scene.tsx) ----------
+   It starts behind the header and ends in a black ridge that runs into the page.
+   --p is scroll progress through the hero: far layers move less than near ones. */
 
-.hero { padding-top: 80px; position: relative; }
-.hero > :not(.hero-light) { position: relative; z-index: 2; }
-/* the Spotlight beam: starts above the header, fades out below the intro */
-.col > .hero-light {
+.hero.horizon { min-height: max(560px, calc(100svh - 73px)); padding-top: 13vh; align-content: start; }
+.col > .horizon-scene {
   grid-column: full;
   position: absolute;
-  top: -110px;
-  bottom: -260px;
+  top: -73px;
+  bottom: 0;
   left: 0;
   right: 0;
   overflow: hidden;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
-  mask-image: linear-gradient(to bottom, #000 70%, transparent);
 }
+.horizon-stars { position: absolute; left: 0; top: 0; width: 100%; height: 72%; transform: translateY(calc(var(--p, 0) * 22%)); }
+.horizon-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  width: min(1400px, 150%);
+  height: 70%;
+  transform: translate(-32%, calc(var(--p, 0) * 18%));
+  background:
+    radial-gradient(ellipse 34% 30% at 50% 100%, rgba(236, 214, 170, 0.55), transparent 70%),
+    radial-gradient(ellipse 60% 55% at 50% 100%, rgba(205, 180, 130, 0.28), transparent 70%),
+    radial-gradient(ellipse 85% 80% at 50% 100%, rgba(144, 189, 226, 0.2), transparent 72%);
+  opacity: calc(1 - var(--p, 0) * 0.7);
+}
+.horizon-ridges { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; }
+.ridge { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+.ridge-back { fill: #121b24; transform: translateY(calc(var(--p, 0) * 16%)); }
+.ridge-mid { fill: #080d12; transform: translateY(calc(var(--p, 0) * 8%)); }
+.ridge-front { fill: #000; }
+.hero.horizon > h1, .hero.horizon > .lede {
+  transform: translateY(calc(var(--p, 0) * -70px));
+  opacity: calc(1 - var(--p, 0) * 1.4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .horizon-glow { animation: horizon-breathe 9s ease-in-out infinite alternate; }
+}
+@keyframes horizon-breathe { from { filter: brightness(0.92); } to { filter: brightness(1.08); } }
+
+/* ---------- headings and text roles ---------- */
+
+.hero { padding-top: 80px; position: relative; }
+.hero > :not(.horizon-scene) { position: relative; z-index: 2; }
 .hero h1 {
   grid-column: content-start / wide-end;
   font-family: var(--serif);

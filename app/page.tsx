@@ -1,6 +1,6 @@
 import { pageMeta } from "@/lib/metadata";
 import type { CSSProperties } from "react";
-import { HeroSpotlight } from "@/components/hero-spotlight";
+import { HorizonScene } from "@/components/horizon-scene";
 import { GlowFrame } from "@/components/glow-frame";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { Reveal } from "@/components/reveal";
@@ -15,7 +15,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
-    <section className="col hero"><HeroSpotlight />
+    <section className="col hero horizon"><HorizonScene />
       <Reveal as="h1"><span className="greet">Hi, I'm Gabriel.</span> I build small apps and tools, mostly for problems around me.</Reveal>
       <Reveal as="p" className="lede">The thing people have actually used most is a lounge booking app for my residential college, which about 130 residents use.</Reveal>
     </section>
@@ -40,7 +40,7 @@ export default function Page() {
             <h3>SIA Engineering Company</h3>
             <p className="dateline">Digital Transformation Intern · <span className="nw">May – Aug 2026</span></p>
             <p>Built internal tools for the ground equipment team, including a browser extension that cut a 30-minute daily battery check to under a minute.</p>
-            <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="/testimonials/siaec-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+            <ShimmerLink background="#90bde2" shimmerColor="#ffffff" shimmerSize="0.1em" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium text-black" href="/testimonials/siaec-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
           </div>
         </li>
         <li className="entry-row">
@@ -49,7 +49,7 @@ export default function Page() {
             <h3>Aimazing</h3>
             <p className="dateline">Business Management Intern · <span className="nw">Jan – Jun 2025</span></p>
             <p>Rolled out 500+ IoT loyalty devices across three malls at a retail-tech startup, and onboarded 200+ merchants onto the product.</p>
-            <ShimmerLink className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium" href="/testimonials/aimazing-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+            <ShimmerLink background="#90bde2" shimmerColor="#ffffff" shimmerSize="0.1em" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium text-black" href="/testimonials/aimazing-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
           </div>
         </li>
       </ul>
