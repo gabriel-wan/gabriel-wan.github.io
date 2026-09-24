@@ -65,6 +65,8 @@ a:hover { text-decoration-color: currentColor; }
 
 strong { font-weight: 600; }
 
+::selection { background: rgba(144, 189, 226, 0.32); color: #fff; }
+
 code {
   font: 0.86em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   background: var(--bg-2);
@@ -274,23 +276,19 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   .horizon-sun { left: 80%; bottom: 13%; width: 18vh; height: 18vh; }
 }
 
-/* ---------- other pages: a still band of stars at the top (components/sky-strip.tsx) ---------- */
+/* ---------- other pages: twinkling stars behind the page (components/starfield.tsx) ---------- */
 
-.sky-strip {
-  position: absolute;
-  top: 0;
+.starfield {
+  position: fixed;
   left: 0;
   right: 0;
-  height: 440px;
+  top: 0;
+  height: 100lvh;
   z-index: -1;
   pointer-events: none;
-  overflow: hidden;
-  background: radial-gradient(ellipse 70% 60% at 75% 0%, rgba(144, 189, 226, 0.07), transparent 70%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent);
-  mask-image: linear-gradient(to bottom, #000 35%, transparent);
+  background: radial-gradient(ellipse 70% 45% at 75% 0%, rgba(144, 189, 226, 0.07), transparent 70%);
 }
-.sky-strip svg { width: 100%; height: 100%; fill: #e4e8ec; }
-@media (max-width: 760px) { .sky-strip { height: 320px; } }
+.starfield canvas { width: 100%; height: 100%; display: block; }
 
 /* ---------- headings and text roles ---------- */
 
@@ -364,7 +362,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .index + p { margin-top: 20px; }
 
 .col > .index.projects { grid-column: content-start / wide-end; }
-.index.projects > li { position: relative; grid-template-columns: 13rem minmax(0, 1fr); gap: 0 28px; padding: 24px 0; }
+.index.projects > li { position: relative; grid-template-columns: 13rem minmax(0, 1fr); gap: 0 28px; padding: 24px 0; align-items: start; }
 .index.projects .art { height: 8.125rem; padding: 14px 16px; transition: border-color 150ms; }
 .index.projects .art.is-image { padding: 0; }
 .index.projects .date { display: block; padding-top: 0; margin: -2px 0 4px; }
@@ -536,7 +534,8 @@ html:not(.js) .wheel-progress { display: none; }
   display: inline-block;
   transition: transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.revealed .rw { overflow: visible; }
+.revealed .rw { display: inline; overflow: visible; padding: 0; margin: 0; }
+.revealed .rw-i { display: inline; transition: none; }
 
 /* ---------- small screens ---------- */
 

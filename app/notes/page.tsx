@@ -1,5 +1,5 @@
 import { pageMeta } from "@/lib/metadata";
-import { SkyStrip } from "@/components/sky-strip";
+import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
@@ -11,7 +11,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
-    <SkyStrip />
+    <StarField />
     <header className="col page-head">
       <Reveal as="h1">Notes</Reveal>
       <Reveal as="p" className="dek">Things I'm building, breaking and figuring out, written mostly for my own future reference.</Reveal>

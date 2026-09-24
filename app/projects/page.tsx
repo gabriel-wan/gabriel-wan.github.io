@@ -2,7 +2,7 @@ import { pageMeta } from "@/lib/metadata";
 import type { CSSProperties } from "react";
 import { GlowFrame } from "@/components/glow-frame";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
-import { SkyStrip } from "@/components/sky-strip";
+import { StarField } from "@/components/starfield";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 
@@ -15,7 +15,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
-    <SkyStrip />
+    <StarField />
     <header className="col page-head">
       <Reveal as="h1">Projects</Reveal>
       <Reveal as="p" className="dek">Things I've built over the past year, newest first. Most have a write-up about why I made it, how it works and what went wrong.</Reveal>

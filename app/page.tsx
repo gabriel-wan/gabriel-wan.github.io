@@ -20,63 +20,6 @@ export default function Page() {
       <Reveal as="p" className="lede">The thing people have actually used most is a lounge booking app for my residential college, which about 130 residents use.</Reveal>
     </section>
 
-    <section className="col group-head" id="about">
-      <Reveal as="h2">About</Reveal>
-      <div className="about">
-        <img src="/images/gabriel-portrait.jpg" alt="Gabriel Wan standing at a railing at dusk, with hills behind" width="480" height="600" loading="lazy" />
-        <div>
-          <p>I'm a Year 2 Computer Science student at NUS. I like building things that make life a little easier, and sometimes just building things because I find them interesting.</p>
-          <p>Beyond the screen, you'll usually find me playing squash, at the gym, out running, or more recently, journalling and putting my thoughts down.</p>
-        </div>
-      </div>
-    </section>
-
-    <section className="col group-head" id="work">
-      <Reveal as="h2">Work</Reveal>
-      <ul className="entries">
-        <li className="entry-row">
-          <img className="logo" src="/images/logo-siaec.png" alt="SIA Engineering Company logo" width="128" height="128" loading="lazy" />
-          <div>
-            <h3>SIA Engineering Company</h3>
-            <p className="dateline">Digital Transformation Intern · <span className="nw">May – Aug 2026</span></p>
-            <p>Built internal tools for the ground equipment team, including a browser extension that cut a 30-minute daily battery check to under a minute.</p>
-            <ShimmerLink background="#151e28" shimmerColor="#d6ebff" shimmerSize="2px" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium border-white/25" href="/testimonials/siaec-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
-          </div>
-        </li>
-        <li className="entry-row">
-          <img className="logo" src="/images/logo-aimazing.png" alt="Aimazing logo" width="128" height="128" loading="lazy" />
-          <div>
-            <h3>Aimazing</h3>
-            <p className="dateline">Business Management Intern · <span className="nw">Jan – Jun 2025</span></p>
-            <p>Rolled out 500+ IoT loyalty devices across three malls at a retail-tech startup, and onboarded 200+ merchants onto the product.</p>
-            <ShimmerLink background="#151e28" shimmerColor="#d6ebff" shimmerSize="2px" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium border-white/25" href="/testimonials/aimazing-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section className="col group-head" id="education">
-      <Reveal as="h2">Education</Reveal>
-      <ul className="entries">
-        <li className="entry-row">
-          <img className="logo" src="/images/logo-nus.png" alt="National University of Singapore logo" width="128" height="128" loading="lazy" />
-          <div>
-            <h3>National University of Singapore</h3>
-            <p className="dateline">Computer Science (Honours) · <span className="nw">2025 – 2028</span></p>
-            <p>Product Associate, NUS Developer Group</p>
-          </div>
-        </li>
-        <li className="entry-row">
-          <img className="logo" src="/images/logo-asrjc.png" alt="Anderson Serangoon Junior College logo" width="128" height="128" loading="lazy" />
-          <div>
-            <h3>Anderson Serangoon Junior College</h3>
-            <p className="dateline">GCE A-Level · <span className="nw">2021 – 2022</span></p>
-            <p>Tennis</p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
     <ProjectWheel id="projects" aria-labelledby="projects-title">
       <div className="wheel-stage">
         <div className="col group-head wheel-inner">
@@ -137,6 +80,63 @@ export default function Page() {
         </div>
       </div>
     </ProjectWheel>
+
+    <section className="col group-head" id="about">
+      <Reveal as="h2">About</Reveal>
+      <div className="about">
+        <img src="/images/gabriel-portrait.jpg" alt="Gabriel Wan standing at a railing at dusk, with hills behind" width="480" height="600" loading="lazy" />
+        <div>
+          <p>I'm a Year 2 Computer Science student at NUS. I like building things that make life a little easier, and sometimes just building things because I find them interesting.</p>
+          <p>Beyond the screen, you'll usually find me playing squash, at the gym, out running, or more recently, journalling and putting my thoughts down.</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="col group-head" id="work">
+      <Reveal as="h2">Work</Reveal>
+      <ul className="entries">
+        <li className="entry-row">
+          <img className="logo" src="/images/logo-siaec.png" alt="SIA Engineering Company logo" width="128" height="128" loading="lazy" />
+          <div>
+            <h3>SIA Engineering Company</h3>
+            <p className="dateline">Digital Transformation Intern · <span className="nw">May – Aug 2026</span></p>
+            <p>Built internal tools for the ground equipment team, including a browser extension that cut a 30-minute daily battery check to under a minute.</p>
+            <ShimmerLink background="#151e28" shimmerColor="#d6ebff" shimmerSize="2px" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium border-white/25" href="/testimonials/siaec-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          </div>
+        </li>
+        <li className="entry-row">
+          <img className="logo" src="/images/logo-aimazing.png" alt="Aimazing logo" width="128" height="128" loading="lazy" />
+          <div>
+            <h3>Aimazing</h3>
+            <p className="dateline">Business Management Intern · <span className="nw">Jan – Jun 2025</span></p>
+            <p>Rolled out 500+ IoT loyalty devices across three malls at a retail-tech startup, and onboarded 200+ merchants onto the product.</p>
+            <ShimmerLink background="#151e28" shimmerColor="#d6ebff" shimmerSize="2px" className="shim gap-1.5 px-3.5 py-1.5 text-[13px] font-medium border-white/25" href="/testimonials/aimazing-recommendation.pdf" target="_blank" rel="noopener">Testimonial<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></ShimmerLink>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section className="col group-head" id="education">
+      <Reveal as="h2">Education</Reveal>
+      <ul className="entries">
+        <li className="entry-row">
+          <img className="logo" src="/images/logo-nus.png" alt="National University of Singapore logo" width="128" height="128" loading="lazy" />
+          <div>
+            <h3>National University of Singapore</h3>
+            <p className="dateline">Computer Science (Honours) · <span className="nw">2025 – 2028</span></p>
+            <p>Product Associate, NUS Developer Group</p>
+          </div>
+        </li>
+        <li className="entry-row">
+          <img className="logo" src="/images/logo-asrjc.png" alt="Anderson Serangoon Junior College logo" width="128" height="128" loading="lazy" />
+          <div>
+            <h3>Anderson Serangoon Junior College</h3>
+            <p className="dateline">GCE A-Level · <span className="nw">2021 – 2022</span></p>
+            <p>Tennis</p>
+          </div>
+        </li>
+      </ul>
+    </section>
     </>
   );
 }

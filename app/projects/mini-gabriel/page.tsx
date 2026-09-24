@@ -1,7 +1,7 @@
 import { pageMeta } from "@/lib/metadata";
 import type { CSSProperties } from "react";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
-import { SkyStrip } from "@/components/sky-strip";
+import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
@@ -15,7 +15,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
-    <SkyStrip />
+    <StarField />
     <article>
       <header className="col page-head">
         <p className="crumb"><a href="/projects">Projects</a></p>
