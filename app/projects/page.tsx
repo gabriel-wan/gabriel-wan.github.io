@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
   "title": "Projects — Gabriel Wan",
-  "description": "Things Gabriel Wan has built over the past year, each with a write-up about why he made it, how it works and what went wrong.",
+  "description": "Things I've built over the past year, each with a write-up about why I made it, how it works and what went wrong.",
   "path": "/projects"
 });
 

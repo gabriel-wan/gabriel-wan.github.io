@@ -8,8 +8,9 @@ import { ProjectWheel } from "@/components/project-wheel";
 
 export const metadata = pageMeta({
   "title": "Gabriel Wan",
-  "description": "Gabriel Wan is a computer science student at NUS who builds small apps and tools, mostly for problems around him. Projects, write-ups and notes.",
-  "path": "/"
+  "description": "I'm a computer science student at NUS. I build small apps and tools, mostly for problems around me, and write about how they went.",
+  "path": "/",
+  "siteName": null
 });
 
 export default function Page() {

@@ -10,6 +10,7 @@ export function pageMeta(m: {
   type?: "website" | "article";
   published?: string;
   noindex?: boolean;
+  siteName?: string | null; // null leaves it out, e.g. on home where the title is already the name
 }): Metadata {
   return {
     title: { absolute: m.title },
@@ -17,7 +18,7 @@ export function pageMeta(m: {
     alternates: { canonical: m.path },
     robots: m.noindex ? { index: false } : undefined,
     openGraph: {
-      siteName: "Gabriel Wan",
+      siteName: m.siteName === null ? undefined : (m.siteName ?? "Gabriel Wan"),
       title: m.ogTitle ?? m.title.replace(" — Gabriel Wan", ""),
       description: m.description,
       url: m.path,
