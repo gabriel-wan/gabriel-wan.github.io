@@ -28,6 +28,14 @@ export default function Page() {
           <div className="wheel">
             <ul className="wheel-track">
               <li className="wheel-item">
+                <a className="wheel-link" href="https://github.com/gabriel-wan/knowbuddy">
+                  <GlowFrame><div className="art is-image"><img src="/images/knowbuddy.jpg" alt="The KnowBuddy cover: its robot connected to the Slack, Google Drive, Jira and Confluence logos, with the line Know what you need. No-buddy sees what they shouldn't." width="1280" height="720" loading="lazy" /></div></GlowFrame>
+                  <p className="dateline">Oct 2026 · Tencent Cloud hackathon</p>
+                  <h3>KnowBuddy</h3>
+                  <p>One chat over a company's Slack, Drive, Jira and Confluence that only answers from what you're allowed to see.</p>
+                </a>
+              </li>
+              <li className="wheel-item">
                 <a className="wheel-link" href="/projects/mini-gabriel">
                   <GlowFrame><div className="art is-image is-chat"><img src="/images/mini-gabriel-wheel.webp" alt="A Telegram chat with the bot. I ask how far along it is with an assignment and it answers in three short lowercase messages" width="500" height="289" loading="lazy" /></div></GlowFrame>
                   <p className="dateline">Sep 2026</p>
@@ -96,6 +104,14 @@ export default function Page() {
     <section className="col group-head" id="work">
       <Reveal as="h2">Work</Reveal>
       <ul className="entries">
+        <li className="entry-row">
+          <img className="logo" src="/images/logo-govtech.png" alt="GovTech logo" width="128" height="128" loading="lazy" />
+          <div>
+            <h3>GovTech</h3>
+            <p className="dateline">Data Scientist Intern (incoming) · <span className="nw">Jan – Jun 2027</span></p>
+            <p>Joining the Cybersecurity Group to fine-tune open-weight LLMs that generate payloads for automated red-teaming.</p>
+          </div>
+        </li>
         <li className="entry-row">
           <img className="logo" src="/images/logo-siaec.png" alt="SIA Engineering Company logo" width="128" height="128" loading="lazy" />
           <div>

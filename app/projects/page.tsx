@@ -24,6 +24,14 @@ export default function Page() {
     <section className="col sec" aria-label="All projects">
       <ul className="index projects">
         <li>
+          <GlowFrame><div className="art is-image" aria-hidden="true"><img src="/images/knowbuddy.jpg" alt="" width="1280" height="720" loading="lazy" /></div></GlowFrame>
+          <div>
+            <span className="date">Oct 2026</span>
+            <h2 className="item"><a href="https://github.com/gabriel-wan/knowbuddy">KnowBuddy</a></h2>
+            <p>One chat over a company's Slack, Google Drive, Jira and Confluence that only answers from what the person asking can already see. Built at Tencent Cloud's AI hackathon, where I did the search, the permission checks and the audit log.</p>
+          </div>
+        </li>
+        <li>
           <GlowFrame><div className="art is-image is-chat" aria-hidden="true"><img src="/images/mini-gabriel-wheel.webp" alt="" width="500" height="289" loading="lazy" /></div></GlowFrame>
           <div>
             <span className="date">Sep 2026</span>
