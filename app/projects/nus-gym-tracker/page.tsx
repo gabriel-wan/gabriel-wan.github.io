@@ -8,6 +8,7 @@ export const metadata = pageMeta({
   "title": "NUS Gym Tracker — Gabriel Wan",
   "description": "A Telegram bot on Cloudflare Workers that tells you how busy the NUS gyms are and saves a reading every 5 minutes. Live since 18 September 2026.",
   "path": "/projects/nus-gym-tracker",
+  "image": "/videos/nus-gym-tracker.jpg",
   "ogTitle": "NUS Gym Tracker: saving the gym history NUS doesn't keep",
   "type": "article"
 });

@@ -8,6 +8,7 @@ export const metadata = pageMeta({
   "title": "MiniGabriel — Gabriel Wan",
   "description": "Fine-tuning Qwen3-8B with LoRA on about 15,000 of my Telegram messages to see if it could text like me, and how I measured it.",
   "path": "/projects/mini-gabriel",
+  "image": "/videos/mini-gabriel.jpg",
   "ogTitle": "MiniGabriel: fine-tuning a model on my own Telegram messages",
   "type": "article"
 });

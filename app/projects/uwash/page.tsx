@@ -7,6 +7,7 @@ export const metadata = pageMeta({
   "title": "UWash — Gabriel Wan",
   "description": "An IoT laundry system for NUS residences with ESP32 vibration sensors, a Flask backend and a Telegram bot. Top 8 at the NUS Student Life Hackathon 2026.",
   "path": "/projects/uwash",
+  "image": "/videos/uwash.jpg",
   "ogTitle": "UWash: laundry machines that report when they're running",
   "type": "article"
 });

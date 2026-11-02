@@ -1,23 +1,40 @@
 // Twinkling stars on a canvas, shared by the home sky (horizon-scene.tsx) and the
 // starfield on every other page (starfield.tsx). Stars twinkle, the sky drifts a
-// few pixels a second, and now and then a shooting star crosses. With reduced
-// motion they're drawn once and stay still. Returns a function that stops it.
+// few pixels a second, and now and then a shooting star crosses. With `parallax`, the
+// sky leans a little towards the mouse: brighter (nearer) stars move more than faint
+// ones, and `onParallax` gets the same eased offset (-1 to 1) for anything else that
+// should move with it. With reduced motion they're drawn once and stay still.
+// Returns a function that stops it.
 
 type Star = { x: number; y: number; r: number; a: number; speed: number; phase: number };
 
 export function startStars(
   canvas: HTMLCanvasElement,
-  { density, sky }: { density: number; sky: boolean }, // px² of canvas per star; sky: thin out towards a horizon
+  {
+    density,
+    sky,
+    parallax = false,
+    onParallax,
+  }: { density: number; sky: boolean; parallax?: boolean; onParallax?: (x: number, y: number) => void }, // density: px² of canvas per star; sky: thin out towards a horizon
 ) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return () => {};
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const canLean = parallax && !reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   let stars: Star[] = [];
   let width = 0;
   let height = 0;
   let frame = 0;
+  let lastT = 0;
   let shooting: { x: number; y: number; vx: number; vy: number; life: number } | null = null;
   let nextShot = performance.now() + 4000;
+
+  // where the mouse is (-1 to 1 across the window) and where the sky has got to
+  let aimX = 0;
+  let aimY = 0;
+  let leanX = 0;
+  let leanY = 0;
+  const LEAN = 9; // px the nearest stars move with the mouse at the window's edge (the mountains, nearer still, move more)
 
   function size() {
     // Phones resize the viewport as the address bar hides; only redraw the stars
@@ -40,17 +57,33 @@ export function startStars(
     }));
   }
 
+  const drifted = (s: Star, drift: number) => (s.x + drift) % width;
+
   function draw(t: number) {
+    const dt = lastT ? Math.min(64, t - lastT) : 16;
+    lastT = t;
     ctx!.clearRect(0, 0, width, height);
     const drift = reduce ? 0 : (t / 1000) * 3;
+
+    if (canLean) {
+      const k = 1 - Math.exp(-dt / 220);
+      leanX += (aimX - leanX) * k;
+      leanY += (aimY - leanY) * k;
+      onParallax?.(leanX, leanY);
+    }
+
     ctx!.fillStyle = "#e4e8ec";
     for (const s of stars) {
       const twinkle = reduce ? 1 : 0.65 + 0.35 * Math.sin((t / 1000) * s.speed + s.phase);
+      const depth = (s.r - 0.25) / 1.1; // bigger stars feel nearer, so they move more
+      const x = drifted(s, drift) + leanX * LEAN * (0.25 + 0.75 * depth);
+      const y = s.y + leanY * LEAN * 0.5 * (0.25 + 0.75 * depth);
       ctx!.globalAlpha = s.a * twinkle;
       ctx!.beginPath();
-      ctx!.arc((s.x + drift) % width, s.y, s.r, 0, Math.PI * 2);
+      ctx!.arc(x, y, s.r, 0, Math.PI * 2);
       ctx!.fill();
     }
+
     if (!reduce) {
       if (!shooting && t > nextShot) {
         shooting = { x: Math.random() * width * 0.6 + width * 0.2, y: Math.random() * height * 0.25, vx: -6 - Math.random() * 3, vy: 2.2 + Math.random(), life: 1 };
@@ -90,10 +123,24 @@ export function startStars(
     size();
     if (reduce) draw(0);
   };
+  const onPointer = (e: PointerEvent) => {
+    if (e.pointerType !== "mouse") return;
+    aimX = (e.clientX / window.innerWidth) * 2 - 1;
+    aimY = (e.clientY / window.innerHeight) * 2 - 1;
+  };
+  const onLeave = () => {
+    aimX = aimY = 0;
+  };
   window.addEventListener("resize", onResize);
+  if (canLean) {
+    window.addEventListener("pointermove", onPointer, { passive: true });
+    document.documentElement.addEventListener("mouseleave", onLeave);
+  }
 
   return () => {
     cancelAnimationFrame(frame);
     window.removeEventListener("resize", onResize);
+    window.removeEventListener("pointermove", onPointer);
+    document.documentElement.removeEventListener("mouseleave", onLeave);
   };
 }

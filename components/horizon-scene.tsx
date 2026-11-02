@@ -7,6 +7,7 @@ import { startStars } from "@/components/stars";
 // but without three.js. It stays fixed behind the page and changes as you scroll:
 // at the top it's the full night scene; while you read, the mountains sink and the
 // glow dims (--hero); as you reach the footer the sky warms and a sun rises (--dawn).
+// With a mouse, the stars and mountains lean a little towards it (--mx, -1 to 1).
 // With reduced motion the stars are drawn once and the scene stays as it is.
 
 const W = 1440;
@@ -47,7 +48,7 @@ export function HorizonScene() {
     const hero = scene?.parentElement;
     if (!scene || !canvas || !hero) return;
 
-    const stopStars = startStars(canvas, { density: 2600, sky: true });
+    const stopStars = startStars(canvas, { density: 2600, sky: true, parallax: true, onParallax: (x) => scene.style.setProperty("--mx", x.toFixed(4)) });
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return stopStars;
 
     function onScroll() {

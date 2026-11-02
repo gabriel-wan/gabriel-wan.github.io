@@ -15,3 +15,6 @@ CLAUDE.md
 .DS_Store
 .env*
 npm-debug.log*
+
+# /brag launch videos (work files; finished clips go in public/videos)
+brag-output*/

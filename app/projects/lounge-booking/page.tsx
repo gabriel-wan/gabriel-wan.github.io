@@ -7,6 +7,7 @@ export const metadata = pageMeta({
   "title": "Lounge Booking — Gabriel Wan",
   "description": "A Telegram Mini App for booking the shared lounges in my residential college at NUS. About 130 residents use it, and for a while a bug with large Telegram IDs broke it for 40% of them.",
   "path": "/projects/lounge-booking",
+  "image": "/videos/lounge-booking.jpg",
   "ogTitle": "Lounge Booking: a Telegram Mini App used by 130+ residents",
   "type": "article"
 });

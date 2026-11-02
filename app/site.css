@@ -86,6 +86,8 @@ pre {
   overflow-x: auto;
 }
 pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow-wrap: normal; }
+/* captions are already small; code in them stays the same size so it's still readable */
+figcaption code { font-size: 1em; }
 
 .skip {
   position: absolute;
@@ -260,11 +262,12 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   opacity: var(--dawn);
 }
 .horizon-ridges { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; transform: translateY(calc(var(--sink) * 30%)); }
-.ridge { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
-.ridge-back { fill: #121b24; transform: translateY(calc(var(--sink) * -6%)); }
-.ridge-mid { fill: #080d12; }
-.ridge-front { fill: #000; }
-.hero.horizon > h1, .hero.horizon > .lede {
+/* the ridges are a little wider than the screen so they can lean with the mouse (--mx) */
+.ridge { position: absolute; left: -24px; bottom: 0; width: calc(100% + 48px); height: 100%; }
+.ridge-back { fill: #121b24; transform: translate(calc(var(--mx, 0) * 6px), calc(var(--sink) * -6%)); }
+.ridge-mid { fill: #080d12; transform: translateX(calc(var(--mx, 0) * 11px)); }
+.ridge-front { fill: #000; transform: translateX(calc(var(--mx, 0) * 18px)); }
+.hero.horizon > .intro-text, .hero.horizon > .intro-photo {
   transform: translateY(calc(var(--hp, 0) * -70px));
   opacity: calc(1 - var(--hp, 0) * 1.4);
 }
@@ -290,6 +293,40 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   background: radial-gradient(ellipse 70% 45% at 75% 0%, rgba(144, 189, 226, 0.07), transparent 70%);
 }
 .starfield canvas { width: 100%; height: 100%; display: block; }
+
+/* ---------- home: the first screen is About (photo, name, what I do) ---------- */
+
+.hero.horizon.intro { min-height: 0; padding-top: clamp(56px, 9vh, 112px); padding-bottom: clamp(48px, 9vh, 104px); align-items: center; }
+.hero.intro > .intro-text { grid-column: wide; grid-row: 1; max-width: calc(100% - 300px - 56px); }
+.hero.intro > .intro-photo { grid-column: wide; grid-row: 1; justify-self: end; width: 300px; margin: 0; }
+/* tablets held upright: the photo goes under the words, so the name stays on one line */
+@media (max-width: 860px) {
+  .hero.intro > .intro-text { grid-column: content; max-width: none; }
+  .hero.intro > .intro-photo { grid-column: content; grid-row: 2; justify-self: start; width: min(240px, 62%); margin-top: 6px; }
+}
+.hero.intro h1 { margin-bottom: 10px; }
+/* "I build small apps.", with what I do in the accent blue */
+.hero-line { font-family: var(--serif); font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.25rem); line-height: 1.25; color: var(--text-2); margin: 0 0 26px; }
+.hero-line span { color: var(--blue); }
+.intro-photo img { width: 100%; height: auto; border-radius: 3px; border: 1px solid var(--line-2); box-shadow: 0 40px 90px -30px rgba(144, 189, 226, 0.35); }
+
+
+/* ---------- a small star before each home section heading ---------- */
+
+.group-head h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-right: 0.38em;
+  vertical-align: 0.16em;
+  background: var(--flag);
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .group-head h2.split::before { transform: scale(0) rotate(-90deg); transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1) 150ms; }
+  html.js .group-head h2.split.in::before { transform: none; }
+}
 
 /* ---------- headings and text roles ---------- */
 
@@ -446,38 +483,8 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
 .entry-row p { margin: 0; color: var(--text-2); text-wrap: pretty; }
 .entry-row .btn-small { margin-top: 14px; }
 
-/* ---------- home: the project wheel ----------
-   A strip of projects; the one nearest the centre is full strength and the rest
-   sit back. With a mouse, js/wheel.js pins the section (.is-pinned) and moves the
-   strip sideways as the page scrolls. Otherwise the strip scrolls or swipes sideways. */
+/* ---------- project pictures (components/project-art.tsx and the Projects page) ---------- */
 
-.wheel-section { --item: min(26rem, 76vw); }
-.wheel-section.is-pinned .wheel-stage { position: sticky; top: var(--pin-top, 0px); }
-
-.col > .wheel {
-  grid-column: full;
-  position: relative;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-}
-.wheel::-webkit-scrollbar { display: none; }
-.is-pinned .wheel { overflow: hidden; overflow: clip; scroll-snap-type: none; }
-.wheel-track {
-  display: flex;
-  width: max-content;
-  gap: 28px;
-  list-style: none;
-  margin: 0;
-  padding: 4px calc(50% - var(--item) / 2) 8px;
-}
-.is-pinned .wheel-track { will-change: transform; }
-.wheel-item { flex: 0 0 var(--item); margin: 0; scroll-snap-align: center; transition: opacity 300ms, transform 300ms cubic-bezier(0.16, 1, 0.3, 1); }
-.wheel.ready .wheel-item { opacity: 0.4; transform: scale(0.94); }
-.wheel.ready .wheel-item.is-active { opacity: 1; transform: none; }
-.wheel-link { display: block; color: inherit; text-decoration: none; }
-.wheel-link:hover h3 { color: var(--blue); }
 .art {
   height: 15rem;
   display: flex;
@@ -488,26 +495,161 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; overflow
   border-radius: 2px;
   overflow: hidden;
 }
-.art.is-image { padding: 0; }
-.art img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.art.is-chat img { object-position: left top; }
+.art.is-image { padding: 0; position: relative; }
+.art img, .art video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.art.is-chat img, .art.is-chat video { object-position: left top; }
 .art.is-fit { background: var(--art-bg, var(--bg-2)); }
-.art.is-fit img { object-fit: contain; object-position: center; }
+.art.is-fit img, .art.is-fit video { object-fit: contain; object-position: center; }
 .art .bars { font-size: 13px; }
 .art .bars th, .art .bars td { padding-top: 6px; padding-bottom: 6px; }
-.wheel-item .dateline { margin: 16px 0 4px; }
-.wheel-item h3 { font-family: var(--serif); font-size: var(--fs-h2); line-height: 1.15; transition: color 150ms; }
-.wheel-item p:last-child { margin: 8px 0 0; color: var(--text-2); }
 
-.wheel-progress { height: 2px; margin-top: 28px; background: var(--line); }
-.wheel-section:not(.is-pinned) .wheel-progress { display: none; }
-.wheel-progress span { display: block; height: 100%; background: var(--text-3); transform: scaleX(0); transform-origin: left; }
-html:not(.js) .wheel-progress { display: none; }
+/* ---------- home: projects as big pictures in a row (components/project-reel.tsx) ----------
+   Each card starts on the reading column's left edge and the next one peeks in from the
+   right. With a mouse, .is-pinned holds the stage on screen while the row slides. */
 
-@media (max-height: 760px) {
-  .wheel-inner.group-head { padding-top: 32px; }
-  .wheel-inner.group-head::before { margin-bottom: 32px; }
-  .wheel .art { height: 12rem; }
+.reel-section {
+  --card: min(880px, 84vw);
+  --reel-left: max(var(--gutter), calc((100% - var(--measure)) / 2));
+}
+.reel-section.is-pinned { --card: min(880px, 60vw, calc((100svh - 300px) * 16 / 9)); }
+.reel-section.is-pinned .reel-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+.reel-head h2 { margin: 0; }
+.reel-index { display: flex; gap: 2px; margin-right: -6px; }
+.reel-index button {
+  position: relative;
+  padding: 6px;
+  background: none;
+  border: 0;
+  color: var(--text-3);
+  font: 500 12px/1 var(--sans);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: color 200ms;
+}
+.reel-index button::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reel-index button:hover { color: var(--text-2); }
+.reel-index button[aria-current="true"] { color: var(--text); }
+.reel-index button[aria-current="true"]::after { transform: none; }
+
+.reel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--reel-left);
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.reel::-webkit-scrollbar { display: none; }
+.is-pinned .reel { overflow: hidden; overflow: clip; scroll-snap-type: none; }
+.reel-track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  list-style: none;
+  margin: 0;
+  /* the right padding lets the last card come to rest where the first one started */
+  padding: 4px max(var(--gutter), calc(100% - var(--reel-left) - var(--card))) 8px var(--reel-left);
+}
+.is-pinned .reel-track { will-change: transform; }
+.reel-item { flex: 0 0 var(--card); margin: 0; scroll-snap-align: start; }
+.reel-link { display: block; color: inherit; text-decoration: none; }
+
+.reel-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+}
+.reel-media .art.is-image { height: 100%; border: 0; border-radius: 0; background: none; }
+.reel-media .art img, .reel-media .art video { object-position: center top; }
+.reel-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+  filter: blur(40px) saturate(1.5) brightness(0.95);
+}
+.reel-media.is-fit .art.is-image { position: absolute; inset: 7% 6%; height: auto; justify-content: center; overflow: visible; }
+.reel-media.is-fit .art img, .reel-media.is-fit .art video {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.85);
+}
+.reel-media { transition: border-color 200ms; }
+.reel-link:hover .reel-media { border-color: var(--line-3); }
+
+/* the sound button sits on the video's bottom-right corner (outside the link, so it doesn't open the project) */
+.reel-item { position: relative; }
+.reel-sound {
+  position: absolute;
+  right: 12px;
+  top: calc(var(--card) * 9 / 16 - 48px);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(10, 12, 14, 0.62);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 150ms, border-color 150ms;
+}
+.reel-sound svg { width: 18px; height: 18px; }
+.reel-sound:hover { background: rgba(10, 12, 14, 0.85); border-color: rgba(255, 255, 255, 0.55); }
+.reel-sound[aria-pressed="true"] { color: #000; background: var(--blue); border-color: var(--blue); }
+.reel-sound:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.reel-text { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 8px 40px; padding-top: 18px; }
+.reel-text .dateline { margin: 0 0 6px; }
+.reel-num { margin-right: 10px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.reel-text h3 { font-family: var(--serif); font-size: clamp(28px, 1.2rem + 1vw, 36px); font-weight: 400; line-height: 1.1; margin: 0; transition: color 150ms; }
+.reel-link:hover h3 { color: var(--blue); }
+.reel-blurb { margin: 0; color: var(--text-2); font-size: 15.5px; line-height: 1.55; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reel-item { opacity: 0; transform: translateX(72px); transition: opacity 700ms ease, transform 1000ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--i) * 80ms); }
+  html.js .reel.in .reel-item { opacity: 1; transform: none; }
+}
+
+@media (max-width: 760px) {
+  .reel-index { display: none; }
+  .reel-track { gap: 16px; }
+  .reel-media.is-fit .art.is-image { inset: 6% 5%; }
+  .reel-text { grid-template-columns: minmax(0, 1fr); padding-top: 14px; }
+  .reel-text h3 { font-size: 26px; }
+  .reel-blurb { font-size: 15px; }
 }
 
 /* ---------- scroll reveal ----------
@@ -552,8 +694,9 @@ html:not(.js) .wheel-progress { display: none; }
   .about img { max-width: 180px; }
   .entry-row { grid-template-columns: 52px minmax(0, 1fr); gap: 18px; }
   .logo { width: 52px; height: 52px; }
-  .wheel .art { height: 12.5rem; }
-  .wheel-track { gap: 14px; }
+  .hero.intro > .intro-text { grid-column: content; max-width: none; }
+  .hero-line { font-size: 1.4rem; }
+  .hero.intro > .intro-photo { grid-column: content; grid-row: 2; justify-self: start; width: min(220px, 62%); margin-top: 6px; }
   .index > li { grid-template-columns: minmax(0, 1fr); }
   .index .date { padding-top: 0; margin-bottom: 4px; }
   .index.projects > li { grid-template-columns: minmax(0, 1fr); }
@@ -584,7 +727,6 @@ html:not(.js) .wheel-progress { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   a { transition: none; }
-  .wheel-item { transition: none; }
 }
 
 @media print {

@@ -7,6 +7,7 @@ export const metadata = pageMeta({
   "title": "KopiKaki — Gabriel Wan",
   "description": "A voice assistant for seniors built with Gemini Live, Next.js and Firebase at the Build with Gemini hackathon. You call it, say what you feel like doing, and it tries to set up a meetup with someone nearby.",
   "path": "/projects/kopikaki",
+  "image": "/videos/kopikaki.jpg",
   "ogTitle": "KopiKaki: a voice assistant that helps seniors meet people",
   "type": "article"
 });

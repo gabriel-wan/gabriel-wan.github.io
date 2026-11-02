@@ -10,19 +10,20 @@ export function pageMeta(m: {
   type?: "website" | "article";
   published?: string;
   noindex?: boolean;
+  image?: string; // the link-preview picture; defaults to the site's
   siteName?: string | null; // null leaves it out, e.g. on home where the title is already the name
 }): Metadata {
   return {
     title: { absolute: m.title },
     description: m.description,
-    alternates: { canonical: m.path },
+    alternates: m.noindex ? undefined : { canonical: m.path },
     robots: m.noindex ? { index: false } : undefined,
     openGraph: {
       siteName: m.siteName === null ? undefined : (m.siteName ?? "Gabriel Wan"),
       title: m.ogTitle ?? m.title.replace(" — Gabriel Wan", ""),
       description: m.description,
       url: m.path,
-      images: ["/images/og.png?v=2"],
+      images: [m.image ?? "/images/og.png?v=2"],
       ...(m.type === "article" ? { type: "article", publishedTime: m.published } : { type: "website" }),
     },
   };
