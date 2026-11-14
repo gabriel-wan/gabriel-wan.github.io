@@ -552,13 +552,14 @@ figcaption code { font-size: 1em; }
 .art .bars th, .art .bars td { padding-top: 6px; padding-bottom: 6px; }
 
 /* ---------- home: projects as big pictures in a row (components/project-reel.tsx) ----------
-   Each card starts on the reading column's left edge and the next one peeks in from the
-   right. With a mouse, .is-pinned holds the stage on screen while the row slides. */
+   The row, and its heading, start on the same left edge as the intro above (the wide
+   column), and the next card peeks in from the right. With a mouse, .is-pinned holds the stage on screen while the row slides. */
 
 .reel-section {
   --card: min(880px, 84vw);
-  --reel-left: max(var(--gutter), calc((100% - var(--measure)) / 2));
+  --reel-left: max(var(--gutter), calc((100% - var(--wide)) / 2));
 }
+.reel-section .group-head > *, .reel-section .group-head::before { grid-column: wide; }
 .reel-section.is-pinned { --card: min(880px, 60vw, calc((100svh - 300px) * 16 / 9)); }
 .reel-section.is-pinned .reel-stage {
   position: sticky;

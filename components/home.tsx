@@ -45,7 +45,7 @@ export function HomePage() {
             I <span>build small apps.</span>
           </p>
           <Reveal as="p" className="lede">
-            I&apos;m a Year 2 Computer Science student at NUS. I like building things that make life a little easier, and sometimes just building things because I find them interesting.
+            I&apos;m a Year 2 Computer Science student at NUS. Most of what I build starts with something that annoys me or my friends, like booking our house lounge or keeping track of deadlines, and lately I&apos;ve been spending a lot of time on LLMs and how to use them safely.
           </Reveal>
           <Reveal as="p" className="lede">
             Beyond the screen, you&apos;ll usually find me playing squash, at the gym, out running, or more recently, journalling and putting my thoughts down.
