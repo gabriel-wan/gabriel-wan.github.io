@@ -302,7 +302,7 @@ figcaption code { font-size: 1em; }
 /* tablets held upright: the photo goes under the words, so the name stays on one line */
 @media (max-width: 860px) {
   .hero.intro > .intro-text { grid-column: content; max-width: none; }
-  .hero.intro > .intro-photo { grid-column: content; grid-row: 2; justify-self: start; width: min(240px, 62%); margin-top: 6px; }
+  .hero.intro > .intro-photo { grid-column: content; grid-row: 2; justify-self: center; width: min(240px, 62%); margin-top: 6px; }
 }
 .hero.intro h1 { margin-bottom: 10px; }
 /* "I build small apps.", with what I do in the accent blue */
@@ -749,7 +749,7 @@ figcaption code { font-size: 1em; }
   .logo { width: 52px; height: 52px; }
   .hero.intro > .intro-text { grid-column: content; max-width: none; }
   .hero-line { font-size: 1.4rem; }
-  .hero.intro > .intro-photo { grid-column: content; grid-row: 2; justify-self: start; width: min(220px, 62%); margin-top: 6px; }
+  .hero.intro > .intro-photo { grid-column: content; grid-row: 2; justify-self: center; width: min(220px, 62%); margin-top: 6px; }
   .index > li { grid-template-columns: minmax(0, 1fr); }
   .index .date { padding-top: 0; margin-bottom: 4px; }
   .index.projects > li { grid-template-columns: minmax(0, 1fr); }

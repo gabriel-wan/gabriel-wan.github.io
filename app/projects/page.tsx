@@ -3,7 +3,6 @@ import type { CSSProperties } from "react";
 import { GlowFrame } from "@/components/glow-frame";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { StarField } from "@/components/starfield";
-import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
@@ -61,14 +60,6 @@ export default function Page() {
             <span className="date">Aug 2026</span>
             <h2 className="item"><a href="/projects/kopikaki">KopiKaki</a></h2>
             <p>A voice assistant that helps seniors find someone nearby to meet. Built at the Build with Gemini hackathon, where I did the matching.</p>
-          </div>
-        </li>
-        <li>
-          <GlowFrame><div className="art" aria-hidden="true"><table className="bars"><tbody><tr><th>Before</th><td className="track"><span className="bar" style={{ "--v": "100%" } as CSSProperties}></span></td><td className="num">30 min</td></tr><tr className="is-hi"><th>After</th><td className="track"><span className="bar" style={{ "--v": "3%" } as CSSProperties}></span></td><td className="num">&lt;1 min</td></tr></tbody></table></div></GlowFrame>
-          <div>
-            <span className="date">May – Aug 2026</span>
-            <h2 className="item"><Link href="/#work">GSE battery dashboard</Link></h2>
-            <p>A browser extension from my SIA Engineering internship that pulls battery data for 295 pieces of ground equipment into one page, taking a daily check from 30 minutes to under one.</p>
           </div>
         </li>
         <li>
