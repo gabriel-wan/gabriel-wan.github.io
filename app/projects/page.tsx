@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 
 export const metadata = pageMeta({
   "title": "Projects — Gabriel Wan",
-  "description": "Things I've built over the past year, each with a write-up about why I made it, how it works and what went wrong.",
+  "description": "Things I've built, newest first: why I made each one, how it works and what went wrong.",
   "path": "/projects"
 });
 
@@ -18,7 +18,7 @@ export default function Page() {
     <StarField />
     <header className="col page-head">
       <Reveal as="h1">Projects</Reveal>
-      <Reveal as="p" className="dek">Things I've built over the past year, newest first. Most have a write-up about why I made it, how it works and what went wrong.</Reveal>
+      <Reveal as="p" className="dek">Things I've built, newest first. Open one to read why I made it, how it works and what went wrong.</Reveal>
     </header>
 
     <section className="col sec" aria-label="All projects">

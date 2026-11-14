@@ -74,16 +74,16 @@ export default function Page() {
         <div className="flows">
           <p className="flow-label">The call</p>
           <ol className="flow">
-            <li>Phone browser</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Server mints a one-time token</li><li className="arrow" aria-hidden="true">→</li>
+            <li>Phone browser</li>
+            <li>Server mints a one-time token</li>
             <li>Audio to and from Gemini Live</li>
           </ol>
           <p className="flow-label">The match</p>
           <ol className="flow">
-            <li>What the caller asked for</li><li className="arrow" aria-hidden="true">→</li>
-            <li>/api/match</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Gemini function calling</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Firestore</li><li className="arrow" aria-hidden="true">→</li>
+            <li>What the caller asked for</li>
+            <li>/api/match</li>
+            <li>Gemini function calling</li>
+            <li>Firestore</li>
             <li>Home screen updates</li>
           </ol>
         </div>

@@ -70,18 +70,18 @@ export default function Page() {
         <div className="flows">
           <p className="flow-label">Collecting, every 5 minutes</p>
           <ol className="flow">
-            <li>Cron trigger</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Worker</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Fetch the REBOKS page</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Parse</li><li className="arrow" aria-hidden="true">→</li>
+            <li>Cron trigger</li>
+            <li>Worker</li>
+            <li>Fetch the REBOKS page</li>
+            <li>Parse</li>
             <li>Save to D1</li>
           </ol>
           <p className="flow-label">Answering, when someone asks</p>
           <ol className="flow">
-            <li>/gym on Telegram</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Webhook</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Worker</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Read from D1</li><li className="arrow" aria-hidden="true">→</li>
+            <li>/gym on Telegram</li>
+            <li>Webhook</li>
+            <li>Worker</li>
+            <li>Read from D1</li>
             <li>Reply</li>
           </ol>
         </div>

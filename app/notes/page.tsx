@@ -22,7 +22,7 @@ export default function Page() {
       <ul className="index notes">
         {NOTES.map((n) => (
           <li key={n.slug}>
-            <span className="date">{n.date}<span className="read">{n.read}</span></span>
+            <span className="date">{n.date.replace(/^\d+ /, "")}<span className="read">{n.read}</span></span>
             <div>
               <h2 className="item"><a href={`/notes/${n.slug}`}>{n.title}</a></h2>
               <p>{n.summary}</p>

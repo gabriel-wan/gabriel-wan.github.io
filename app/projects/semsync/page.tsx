@@ -53,9 +53,9 @@ export default function Page() {
         <div className="flows">
           <p className="flow-label">About once an hour, for each person</p>
           <ol className="flow">
-            <li>Canvas feed + NUSMods</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Build the semester's events</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Compare with the last sync</li><li className="arrow" aria-hidden="true">→</li>
+            <li>Canvas feed + NUSMods</li>
+            <li>Build the semester's events</li>
+            <li>Compare with the last sync</li>
             <li>Send only the changes to Google</li>
           </ol>
         </div>

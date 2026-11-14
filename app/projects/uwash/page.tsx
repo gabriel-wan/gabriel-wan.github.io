@@ -43,19 +43,21 @@ export default function Page() {
         <div className="flows">
           <p className="flow-label">From the machine</p>
           <ol className="flow">
-            <li>ESP32 + vibration sensor</li><li className="arrow" aria-hidden="true">→</li>
-            <li>HTTPS with an API key</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Flask API</li><li className="arrow" aria-hidden="true">→</li>
+            <li>ESP32 + vibration sensor</li>
+            <li>HTTPS with an API key</li>
+            <li>Flask API</li>
             <li>SQLite</li>
           </ol>
           <p className="flow-label">To residents</p>
           <ol className="flow">
-            <li>SQLite</li><li className="arrow" aria-hidden="true">→</li>
+            <li>SQLite</li>
+            <li>Flask API</li>
             <li>React dashboard</li>
           </ol>
           <ol className="flow">
-            <li>SQLite</li><li className="arrow" aria-hidden="true">→</li>
-            <li>Telegram bot: "your clothes are ready"</li>
+            <li>SQLite</li>
+            <li>Telegram bot</li>
+            <li>A ping when your wash is done</li>
           </ol>
         </div>
         <p>A small ESP32 board with an SW-420 vibration sensor sits on each machine and tells the backend when the machine starts and stops. The dashboard shows every washer and dryer in your house as free, in use (with who's using it and how long is left), running with nobody registered, or done but not collected yet. It covers six colleges and 31 houses, each with its own machines.</p>
