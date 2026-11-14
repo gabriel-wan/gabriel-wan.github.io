@@ -2,6 +2,7 @@ import { pageMeta } from "@/lib/metadata";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
+import { ProjectPager } from "@/components/pager";
 
 export const metadata = pageMeta({
   "title": "Lounge Booking — Gabriel Wan",
@@ -46,7 +47,7 @@ export default function Page() {
           <li>Each floor has a strip of upcoming bookings, so you can see what's taken at a glance.</li>
           <li>Admins can cancel bookings, and the list of admins lives in an environment variable.</li>
         </ul>
-        <p>I'm the main developer. From mid-February I reworked the first version into the one residents use now, fixed the bugs below, and built the interface and the admin tools. 46 of the 54 commits in the repository are mine. It runs on Node.js, Express and SQLite, hosted on Railway.</p>
+        <p>From mid-February I reworked the first version into the one residents use now, fixed the bugs below, and built the interface and the admin tools. It runs on Node.js, Express and SQLite, hosted on Railway.</p>
       </section>
 
       <section className="col sec" id="decisions">
@@ -62,8 +63,7 @@ export default function Page() {
       <section className="col sec" id="wrong">
         <Reveal as="h2">What went wrong</Reveal>
         <h3>The app couldn't find 40% of users' bookings</h3>
-        <p>Telegram user IDs can be bigger than 2,147,483,647, the largest 32-bit integer. The SQLite driver sends a JavaScript number to the database as an integer if it fits in 32 bits, and as a floating-point number if it doesn't. The ID column was text, so SQLite stored the big IDs as <code>6123456789.0</code>. Everyone whose ID was below that threshold was fine.</p>
-        <p>The "my bookings" lookup used the ID from the URL, <code>6123456789</code>, which never matched. I fixed it by turning every ID into a plain string wherever it comes into the backend (<code>String(id).split('.')[0]</code> when creating a user, looking up bookings and cancelling). There's a <a href="/notes/the-64-bit-bug">longer write-up in a note</a>.</p>
+        <p>Friends testing it found that their bookings weren't showing up, because big Telegram IDs were being saved as <code>6123456789.0</code> and lookups never matched. I wrote about how I tracked it down in <a href="/notes/the-64-bit-bug">a note</a>.</p>
         <h3>The rate limiter was blocking the wrong people</h3>
         <p>Behind Railway's proxy, every request looked like it came from the proxy instead of from each resident, which threw off the per-user rate limit. Setting Express to trust the proxy's forwarded address fixed it.</p>
         <h3>Identity came from the client</h3>
@@ -71,15 +71,10 @@ export default function Page() {
       </section>
 
       <section className="col sec" id="learned">
-        <Reveal as="h2">What I learned</Reveal>
-        <p>IDs shouldn't be numbers. You never do maths on a Telegram ID, so it should be a string from the moment it arrives. This bug also only shows up for IDs above one threshold, so whether you'd ever notice it depends on whose accounts you test with.</p>
-        <p>In a Mini App, the server should check what Telegram signed instead of trusting whatever ID the client sends.</p>
-        <p>A lot of what broke only exists in production: the proxy, restarts and the volume. None of that was on my laptop.</p>
-        <nav className="pager" aria-label="More projects">
-          <a className="prev" href="/projects/mini-gabriel"><span>Previous</span>MiniGabriel</a>
-          <a className="next" href="/projects/nus-gym-tracker"><span>Next</span>NUS Gym Tracker</a>
-        </nav>
+        <Reveal as="h2">The best part</Reveal>
+        <p>Seeing people actually use it. Bookings used to go through a Telegram channel that turned into a long list of messages, and now people just open the bot instead. One of my friends even told me he'd been telling the other houses about it, since some of them didn't have their own booking bot yet, which made me pretty happy.</p>
       </section>
+      <ProjectPager href="/projects/lounge-booking" />
     </article>
     </>
   );

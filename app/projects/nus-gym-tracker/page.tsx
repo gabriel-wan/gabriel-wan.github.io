@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
+import { ProjectPager } from "@/components/pager";
 
 export const metadata = pageMeta({
   "title": "NUS Gym Tracker — Gabriel Wan",
@@ -39,14 +40,15 @@ export default function Page() {
 
       <section className="col sec" id="why">
         <Reveal as="h2">Why I built it</Reveal>
-        <p>The REBOKS capacity page shows how many people are in each NUS gym right now. It doesn't show anything else, so you can't tell whether 7pm is always this bad or whether 9pm is quieter. On that Wednesday evening the University Sports Centre gym was at 109 out of 110, which is worth knowing before you walk over.</p>
+        <p>For myself, mostly. I go to the gym pretty often, and checking how full it was meant opening REBOKS, getting redirected and reading a page every single time, when a Telegram message would be much quicker.</p>
+        <p>REBOKS also only shows how many people are in each gym right now and doesn't keep anything, so you can't tell whether 7pm is always this bad or whether 9pm is quieter. On that Wednesday evening, for example, the University Sports Centre gym was at 109 out of 110.</p>
         <p>Other students ask the same things on r/nus.</p>
         <figure className="wide artifact shot">
           <img src="/images/gym-reddit-crowded.webp" alt="A post on r/nus asking when the least crowded time at the U-Town gym is" width="954" height="298" loading="lazy" />
           <img src="/images/gym-reddit-capacity.webp" alt="A post on r/nus asking how to check current gym capacity. REBOKS now redirects to a landing page, and the poster later finds the QR code at the bottom of it" width="985" height="386" loading="lazy" />
           <figcaption>Two posts on r/nus. The first asks when the gym is least crowded, which needs the history the page doesn't keep. The second is from someone who couldn't find the numbers after REBOKS started redirecting.</figcaption>
         </figure>
-        <p>Checking also means opening one app, getting redirected to another and reading a page. A Telegram message is quicker, but the history is the main reason I built it. It tracks the University Town and University Sports Centre gyms. REBOKS also lists two pools, which the parser understands but I don't store.</p>
+        <p>So the bot also saves a reading every 5 minutes. It tracks the University Town and University Sports Centre gyms. REBOKS also lists two pools, which the parser understands but I don't store.</p>
         <figure className="artifact shot">
           <img src="/images/gym-chat.webp" alt="A Telegram chat. A friend asks how the gym bot tracks the gyms. I reply that it pulls the numbers from the REBOKS website, because that's the only place that shows how many people are inside, and that I plan to collect data to predict with a model later" width="705" height="800" loading="lazy" />
           <figcaption>Explaining the bot to a friend the day it started collecting.</figcaption>
@@ -156,11 +158,8 @@ export default function Page() {
           <li><code>/predict</code>: how busy it'll be in 30 to 90 minutes, only if it beats the plain average.</li>
           <li><code>/alert</code>: a message when a gym drops below a level you pick.</li>
         </ul>
-        <nav className="pager" aria-label="More projects">
-          <a className="prev" href="/projects/lounge-booking"><span>Previous</span>Lounge Booking</a>
-          <a className="next" href="/projects/kopikaki"><span>Next</span>KopiKaki</a>
-        </nav>
       </section>
+      <ProjectPager href="/projects/nus-gym-tracker" />
     </article>
     </>
   );

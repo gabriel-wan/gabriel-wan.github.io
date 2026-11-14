@@ -6,7 +6,15 @@ export type Project = { href: string; title: string; date: string; blurb: string
 
 export const PROJECTS: Project[] = [
   {
-    href: "https://github.com/gabriel-wan/knowbuddy",
+    href: "/projects/semsync",
+    title: "Semsync",
+    date: "Nov 2026 · Live at semsync.live",
+    blurb: "Canvas deadlines, NUSMods classes and exams in your Google Calendar, automatically.",
+    art: { src: "/videos/semsync.jpg", alt: "Semsync putting a week of NUS classes and deadlines into a calendar", width: 1280, height: 720 },
+    large: { src: "/videos/semsync.jpg", video: "/videos/semsync.mp4", alt: "Pasting the Canvas and NUSMods links into Semsync, then a week of classes and deadlines filling the calendar, a deadline moving when Canvas changes, and one being ticked off", width: 1920, height: 1080 },
+  },
+  {
+    href: "/projects/knowbuddy",
     title: "KnowBuddy",
     date: "Oct 2026 · Tencent Cloud hackathon",
     blurb: "One chat over a company's Slack, Drive, Jira and Confluence that only answers from what you're allowed to see.",

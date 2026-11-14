@@ -2,6 +2,7 @@ import { pageMeta } from "@/lib/metadata";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
+import { ProjectPager } from "@/components/pager";
 
 export const metadata = pageMeta({
   "title": "KopiKaki — Gabriel Wan",
@@ -41,6 +42,7 @@ export default function Page() {
 
       <section className="col sec" id="brief">
         <Reveal as="h2">The brief</Reveal>
+        <p>The problem statement was about making AI more accessible, and we thought of the people tech tends to leave out most: the elderly.</p>
         <p>The Best Elderly Hack track pointed out that nearly one in three people will be seniors by 2030, and that most tech isn't built with them in mind. It asked for something that helps them stay connected. The organisers also asked for no more dashboards or health trackers.</p>
       </section>
 
@@ -107,15 +109,10 @@ export default function Page() {
       </section>
 
       <section className="col sec" id="learned">
-        <Reveal as="h2">What I learned</Reveal>
-        <p>How we described the product changed what we built. An AI companion would want long calls. Ours wanted short ones that end with a plan.</p>
-        <p>The fallback order was our whole answer to "what if no one's around?", so it made sense to protect it with its own check in the build.</p>
-        <p>In a one-day build, having the cuts written down kept us from drifting into features nobody would see in the demo.</p>
-        <nav className="pager" aria-label="More projects">
-          <a className="prev" href="/projects/nus-gym-tracker"><span>Previous</span>NUS Gym Tracker</a>
-          <a className="next" href="/projects/uwash"><span>Next</span>UWash</a>
-        </nav>
+        <Reveal as="h2">The last minute</Reveal>
+        <p>Recording the demo went wrong, and our video ended up with no audio, which isn't ideal for a voice assistant. We submitted it about a minute before the deadline anyway, and if there's one thing I took from it, it's that when there's no time left, you just push.</p>
       </section>
+      <ProjectPager href="/projects/kopikaki" />
     </article>
     </>
   );

@@ -6,7 +6,7 @@ import "./globals.css";
 
 // Loaded straight from Google Fonts (not next/font) so Bodoni keeps the same optical
 // size as before; the self-hosted copy rendered with hairline-thin hyphens.
-const FONTS = "https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Public+Sans:wght@400;500;600&display=swap";
+const FONTS = "https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=Public+Sans:wght@400;500;600&display=swap";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gabrielwan.me"),

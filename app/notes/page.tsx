@@ -1,6 +1,7 @@
 import { pageMeta } from "@/lib/metadata";
 import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
+import { NOTES } from "@/lib/notes";
 
 export const metadata = pageMeta({
   "title": "Notes — Gabriel Wan",
@@ -19,20 +20,15 @@ export default function Page() {
 
     <section className="col sec" aria-label="All notes">
       <ul className="index notes">
-        <li>
-          <span className="date">23 Sep 2026</span>
-          <div>
-            <h2 className="item"><a href="/notes/fine-tuning-an-llm-on-myself">Why I fine-tuned an LLM on myself</a></h2>
-            <p>What 15,000 of my messages could and couldn't teach an 8B model, and why measuring it took more work than training it.</p>
-          </div>
-        </li>
-        <li>
-          <span className="date">23 Sep 2026</span>
-          <div>
-            <h2 className="item"><a href="/notes/the-64-bit-bug">The 64-bit bug that broke my Telegram bot</a></h2>
-            <p>How a Telegram user ID ended up stored as <code>6123456789.0</code>, and why it only affected some people.</p>
-          </div>
-        </li>
+        {NOTES.map((n) => (
+          <li key={n.slug}>
+            <span className="date">{n.date}<span className="read">{n.read}</span></span>
+            <div>
+              <h2 className="item"><a href={`/notes/${n.slug}`}>{n.title}</a></h2>
+              <p>{n.summary}</p>
+            </div>
+          </li>
+        ))}
       </ul>
     </section>
     </>

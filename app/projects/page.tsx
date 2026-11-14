@@ -24,11 +24,19 @@ export default function Page() {
     <section className="col sec" aria-label="All projects">
       <ul className="index projects">
         <li>
+          <GlowFrame><div className="art is-image" aria-hidden="true"><img src="/videos/semsync.jpg" alt="" width="1280" height="720" loading="lazy" /></div></GlowFrame>
+          <div>
+            <span className="date">Nov 2026</span>
+            <h2 className="item"><a href="/projects/semsync">Semsync</a></h2>
+            <p>Canvas deadlines, NUSMods classes and exams in your Google Calendar, automatically. Built for myself first, and free at semsync.live.</p>
+          </div>
+        </li>
+        <li>
           <GlowFrame><div className="art is-image" aria-hidden="true"><img src="/images/knowbuddy.jpg" alt="" width="1280" height="720" loading="lazy" /></div></GlowFrame>
           <div>
             <span className="date">Oct 2026</span>
-            <h2 className="item"><a href="https://github.com/gabriel-wan/knowbuddy">KnowBuddy</a></h2>
-            <p>One chat over a company's Slack, Google Drive, Jira and Confluence that only answers from what the person asking can already see. Built at Tencent Cloud's AI hackathon, where I did the search, the permission checks and the audit log.</p>
+            <h2 className="item"><a href="/projects/knowbuddy">KnowBuddy</a></h2>
+            <p>One chat over a company's Slack, Google Drive, Jira and Confluence that only answers from what the person asking can already see. Built with two friends at Tencent Cloud's AI hackathon, where I did the search, the permission checks and the audit log.</p>
           </div>
         </li>
         <li>

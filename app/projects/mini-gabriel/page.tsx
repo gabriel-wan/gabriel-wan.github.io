@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { ShimmerLink } from "@/components/ui/shimmer-button";
 import { StarField } from "@/components/starfield";
 import { Reveal } from "@/components/reveal";
+import { ProjectPager } from "@/components/pager";
 
 export const metadata = pageMeta({
   "title": "MiniGabriel — Gabriel Wan",
@@ -39,6 +40,7 @@ export default function Page() {
 
       <section className="col sec" id="why">
         <Reveal as="h2">Why I built it</Reveal>
+        <p>I use LLMs every day and wanted to learn how fine-tuning one actually works, so I picked something I could judge myself: the way I text.</p>
         <p>Most language models write like a polite assistant, with capital letters, full stops and one tidy paragraph. I write almost the opposite. In the replies I held out for testing, 94.8% start with a lowercase letter, only 9.3% end with punctuation, and about 60% are split across two or three short messages. There's also a fair bit of Singlish.</p>
         <p>I wanted to know whether one person's chats were enough data to move a model toward that style. By style I mean wording, capitalisation, punctuation, slang, emoji, how long replies are, and splitting one reply into several messages. I wasn't trying to make it know things about me, so there's no retrieval or memory in it, only fine-tuning on how I write. It's also something I can check myself, since I know what my own replies look like.</p>
       </section>
@@ -99,12 +101,12 @@ export default function Page() {
         <h3>Training took 91 minutes instead of about 25</h3>
         <p>Padding-free batching was switched off. With an average sequence of 104 tokens, most of the compute went on padding. I've fixed the setting but haven't re-run training yet.</p>
         <h3>It sends too many one-word replies</h3>
-        <p>13.3% of its replies are bare acknowledgements, compared with 4.2% of mine, and that's the biggest part of the remaining distance. I'd expected something like this: 11% of my own turns are only acknowledgements, so the dataset already kept just a third of them. It wasn't enough.</p>
-        <p>I tried changing the sampling temperature first, since that doesn't need retraining. Between 0.4 and 0.8 the score only moved from 0.0570 to 0.0637, which is within noise, and the acknowledgement rate didn't change at all, so the fix has to be in the training data. The bot uses 0.5, which I picked by reading the replies.</p>
+        <p>13.3% of its replies are just "ok" or something like it, compared with 4.2% of mine, and that's the biggest part of the remaining distance. I'd expected something like this: across all my messages it's 11%, so the dataset already kept just a third of them. It wasn't enough.</p>
+        <p>I tried changing the sampling temperature first, since that doesn't need retraining. Between 0.4 and 0.8 the score only moved from 0.0570 to 0.0637, which is within noise, and the share of "ok" replies didn't change at all, so the fix has to be in the training data. The bot uses 0.5, which I picked by reading the replies.</p>
         <h3>The metric only measures style</h3>
         <p>It checks habits like length, lowercase and punctuation, so it can't tell whether a reply fits the conversation. I judge that part by reading the replies, and there's no number for it yet.</p>
         <h3>One number matched for the wrong reason</h3>
-        <p>The base model's acknowledgement rate (0.041) was almost exactly mine (0.042), but only because it never wrote a short reply at all.</p>
+        <p>The base model's share of "ok" replies (0.041) was almost exactly mine (0.042), but only because it never wrote a short reply at all.</p>
         <h3>Names inside messages weren't removed</h3>
         <p>I replaced the names of who sent each message, but not names typed inside the messages. The model can repeat them, so I'm not publishing the weights and the bot isn't public.</p>
       </section>
@@ -122,7 +124,7 @@ export default function Page() {
               <tr><td>Singlish</td><td className="num">13.1%</td><td className="num">12.0%</td></tr>
               <tr><td>Ends with punctuation</td><td className="num">9.3%</td><td className="num">8.1%</td></tr>
               <tr><td>Average length (characters)</td><td className="num">43.9</td><td className="num">32.9</td></tr>
-              <tr className="flagged"><td>Bare acknowledgements</td><td className="num">4.2%</td><td className="num">13.3%</td></tr>
+              <tr className="flagged"><td>Replies that are just "ok"</td><td className="num">4.2%</td><td className="num">13.3%</td></tr>
             </tbody>
           </table>
         </div>
@@ -137,23 +139,18 @@ export default function Page() {
         <Reveal as="h2">What I learned</Reveal>
         <p>Training was the smallest part. It was one 91-minute job, and the decisions that mattered came before it: what counts as a conversation, how to split the data, what to mask, and how to measure the result.</p>
         <p>Next time I'd build the evaluation first, including the floor and the no-training baseline. Without those two, the 83% wouldn't mean much.</p>
-        <p>Checking things by hand paid off. Decoding the labels took a few minutes and would have caught a masking mistake that could have wasted the whole run.</p>
-        <p>I should have removed names inside messages in the data pipeline. Once they're in the weights, the only option left is not publishing them.</p>
       </section>
 
       <section className="col sec" id="next">
         <Reveal as="h2">What's next</Reveal>
         <ul>
-          <li>Keep fewer acknowledgements in the training data and retrain.</li>
+          <li>Cut more of the replies that are just "ok" or similar from the training data and train it again, since it still sends them about three times as often as I do.</li>
           <li>Try different LoRA ranks and epoch counts, now that there's a metric to compare them with.</li>
           <li>A blind test: mix real and generated replies and see if friends can pick out mine.</li>
         </ul>
         <p>I wrote about the project less formally in <a href="/notes/fine-tuning-an-llm-on-myself">a note</a>. The <a href="https://github.com/gabriel-wan/mini-gabriel">repository</a> has the full experiment log and evaluation design.</p>
-        <nav className="pager" aria-label="More projects">
-          <a className="prev" href="/projects"><span>Back to</span>All projects</a>
-          <a className="next" href="/projects/lounge-booking"><span>Next</span>Lounge Booking</a>
-        </nav>
       </section>
+      <ProjectPager href="/projects/mini-gabriel" />
     </article>
     </>
   );
