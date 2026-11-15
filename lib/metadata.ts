@@ -23,7 +23,7 @@ export function pageMeta(m: {
       title: m.ogTitle ?? m.title.replace(" — Gabriel Wan", ""),
       description: m.description,
       url: m.path,
-      images: [m.image ?? "/images/og.png?v=2"],
+      images: [m.image ?? "/images/og.jpg"],
       ...(m.type === "article" ? { type: "article", publishedTime: m.published } : { type: "website" }),
     },
   };
