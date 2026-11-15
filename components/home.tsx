@@ -52,7 +52,7 @@ export function HomePage() {
           </Reveal>
         </div>
         <figure className="intro-photo">
-          <img src="/images/gabriel-portrait.jpg" alt="Gabriel Wan standing at a railing at dusk, with hills behind" width="480" height="600" />
+          <img src="/images/gabriel-portrait.jpg" alt="Gabriel Wan taking a selfie in a glass capsule high above a city and its river" width="720" height="900" />
         </figure>
       </section>
 
